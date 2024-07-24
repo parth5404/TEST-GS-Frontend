@@ -1,7 +1,7 @@
 import { toast } from 'react-hot-toast';
 import { apiConnector } from '../apiConnector';
 import { paymentApi } from '../apis';
-import rzp_logo from '../../assets/Logo/rzp_logo.png';
+import rzp_logo from '../../assets/Logo/rzp_logo.gif';
 import { setPaymentLoading } from '../../redux/slices/profileSlice';
 import { resetCart } from '../../redux/slices/cartSlice';
 
