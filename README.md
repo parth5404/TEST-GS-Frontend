@@ -4,15 +4,15 @@
 
 ## Links
 
-> #### Full Stack GitHub Repo - [Click Here](https://github.com/sunny8080/Study-Notion-Mern)
+> #### Full Stack GitHub Repo - [Click Here]()
 >
 > #### Frontend GitHub Repo - [Click Here](https://github.com/parth5404/TEST-GS-Frontend)
 >
-> #### Backend GitHub Repo - [Click Here](https://github.com/sunny8080/Study-Notion-Mern-Backend)
+> #### Backend GitHub Repo - [Click Here](https://github.com/parth5404/TEST-GS-Backend)
 >
-> #### Frontend Live at - [https://gsacademia-parth-lahotis-projects.vercel.app/]
+> #### Frontend Live at - [https://gsacademia-parth-lahotis-projects.vercel.app/](https://gsacademia-parth-lahotis-projects.vercel.app/)
 >
-> #### Backend Live at - [https://api.study-notion-sunny8080.shop](https://api.study-notion-sunny8080.shop)
+> #### Backend Live at - [https://test-gs-backend.onrender.com/](https://test-gs-backend.onrender.com/)
 
 ## Usage
 
