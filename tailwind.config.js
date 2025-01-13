@@ -2,6 +2,48 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
+    extend: {
+      animation: {
+        'gradient-x': 'gradient-x 15s ease infinite',
+        'fade-in': 'fade-in 1s ease-out',
+      },
+      keyframes: {
+        'gradient-x': {
+          '0%, 100%': {
+            'background-size': '200% 200%',
+            'background-position': 'left center',
+          },
+          '50%': {
+            'background-size': '200% 200%',
+            'background-position': 'right center',
+          },
+        },
+        'fade-in': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(20px)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+        },
+      },
+    },
+    extend: {
+      maxWidth: {
+        maxContent: '1260px',
+      },
+      animation: {
+        pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
+      keyframes: {
+        pulse: {
+          '0%, 100%': { opacity: 1 },
+          '50%': { opacity: .5 },
+        },
+      },
+    },
     fontFamily: {
       inter: ['Inter', 'sans-serif'],
       'edu-sa': ['Edu SA Beginner', 'cursive'],
