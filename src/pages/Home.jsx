@@ -13,6 +13,16 @@ import ReviewsSlider from '../components/common/ReviewsSlider';
 import Spinner from '../components/common/Spinner';
 import { getAllReviews } from '../services/operations/otherServices';
 
+const MemoizedVideo = React.memo(() => (
+  <video
+    className="absolute top-1/2 left-1/2 w-full h-full object-cover -translate-x-1/2 -translate-y-1/2"
+    muted
+    loop
+    autoPlay
+    src="https://videos.pexels.com/video-files/4200440/4200440-uhd_3840_2160_25fps.mp4"
+  />
+));
+
 const Home = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -33,15 +43,9 @@ const Home = () => {
     <div className="bg-base-100 text-base-content font-inter">
       {/* Hero Section */}
       <div className="relative w-full h-screen flex items-center justify-center text-center text-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-base-100 to-transparent z-10"></div>
-        <video
-          className="absolute top-1/2 left-1/2 w-full h-full object-cover -translate-x-1/2 -translate-y-1/2"
-          muted
-          loop
-          autoPlay
-          src="https://videos.pexels.com/video-files/4200440/4200440-uhd_3840_2160_25fps.mp4"
-        />
-        <div className="relative z-20 flex flex-col items-center gap-6">
+        <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
+        <MemoizedVideo />
+        <div className="relative z-20 flex flex-col items-center gap-6 animate-fade-in-up">
           <h1 className="text-5xl md:text-7xl font-bold">
             Welcome to <HighlightedText text="GS Academia" />
           </h1>

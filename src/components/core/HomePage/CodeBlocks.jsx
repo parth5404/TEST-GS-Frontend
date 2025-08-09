@@ -13,15 +13,13 @@ const CodeBlocks = ({
   codeColor,
 }) => {
   return (
-    <div className={`flex flex-col ${flexDir} my-10 md:my-20 justify-between gap-10`}>
-      {/* Section 1 - Left */}
-      <div className="w-full md:w-[50%] flex flex-col gap-8">
-        {heading}
-        <div className="text-base-content font-bold w-[85%] -mt-3">{subHeading}</div>
-
-        <div className="flex mt-7 gap-7">
+    <div className={`flex flex-col ${flexDir} my-20 justify-between gap-12`}>
+      <div className="w-full md:w-1/2 flex flex-col gap-6">
+        <div className="font-playfair-display text-4xl font-bold text-white">{heading}</div>
+        <div className="text-base-content text-lg">{subHeading}</div>
+        <div className="flex mt-6 gap-6">
           <CTAButton active={ctaBtn1.active} linkto={ctaBtn1.linkto}>
-            <div className="flex flex-row items-center gap-2">
+            <div className="flex items-center gap-2">
               {ctaBtn1.btnText}
               <FaArrowRight />
             </div>
@@ -31,30 +29,24 @@ const CodeBlocks = ({
           </CTAButton>
         </div>
       </div>
-
-      {/* Section 2 - Right */}
-      <div className="relative w-full md:w-[470px] bg-base-300 bg-opacity-30 backdrop-blur-md border border-base-200 rounded-xl p-4 shadow-lg">
-        <div className="absolute top-2 left-2 flex gap-2">
-          <div className="w-3 h-3 rounded-full bg-red-500"></div>
-          <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-          <div className="w-3 h-3 rounded-full bg-green-500"></div>
+      <div className="relative w-full md:w-1/2 bg-base-200 bg-opacity-20 backdrop-blur-lg border border-base-300 rounded-2xl p-4 shadow-2xl">
+        <div className="absolute top-3 left-3 flex gap-2">
+          <div className="w-3.5 h-3.5 rounded-full bg-red-500"></div>
+          <div className="w-3.5 h-3.5 rounded-full bg-yellow-500"></div>
+          <div className="w-3.5 h-3.5 rounded-full bg-green-500"></div>
         </div>
-        <div className="flex pt-6">
-          <div className="w-[10%] flex flex-col text-center select-none text-base-content font-inter font-bold">
-            {Array.from({ length: 11 }, (_, i) => (
+        <div className="flex pt-8">
+          <div className="w-[10%] flex flex-col text-center select-none text-base-content font-mono font-bold">
+            {Array.from({ length: 10 }, (_, i) => (
               <p key={i + 1}>{i + 1}</p>
             ))}
           </div>
-
-          <div className={`w-[90%] ${codeColor} font-mono pr-2`}>
+          <div className={`w-[90%] ${codeColor} font-mono`}>
             <TypeAnimation
               sequence={[codeText, 2000, '']}
               omitDeletionAnimation={true}
               repeat={Infinity}
-              style={{
-                whiteSpace: 'pre-wrap',
-                display: 'block',
-              }}
+              style={{ whiteSpace: 'pre-wrap', display: 'block' }}
             />
           </div>
         </div>
