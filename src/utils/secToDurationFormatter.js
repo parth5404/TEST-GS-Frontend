@@ -11,4 +11,4 @@ const secToDurationFormatter = (totalSeconds) => {
   return duration
 }
 
-module.exports = secToDurationFormatter
+export default secToDurationFormatter

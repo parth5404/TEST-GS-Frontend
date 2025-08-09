@@ -1,4 +1,4 @@
-const BASE_URL = process.env.REACT_APP_BACKEND_BASE_URL
+const BASE_URL = import.meta.env.VITE_APP_BACKEND_BASE_URL
 // AUTHENTICATION API
 export const authApi = {
   POST_SEND_OTP_API: BASE_URL + '/auth/sendotp',

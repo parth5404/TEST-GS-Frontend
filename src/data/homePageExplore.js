@@ -116,4 +116,4 @@ const homePageExplore = [
   },
 ]
 
-module.exports = homePageExplore
+export default homePageExplore

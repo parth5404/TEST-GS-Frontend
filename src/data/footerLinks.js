@@ -104,4 +104,4 @@ const footerLinks = [
   }
 ];
 
-module.exports = footerLinks;
+export default footerLinks

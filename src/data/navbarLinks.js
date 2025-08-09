@@ -17,4 +17,4 @@ const navbarLinks = [
   },
 ];
 
-module.exports = navbarLinks
+export default navbarLinks

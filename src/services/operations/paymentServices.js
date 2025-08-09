@@ -4,7 +4,7 @@ import { paymentApi } from '../apis';
 import rzp_logo from '../../assets/Logo/rzp_logo.gif';
 import { setPaymentLoading } from '../../redux/slices/profileSlice';
 import { resetCart } from '../../redux/slices/cartSlice';
-
+const key = import.meta.env.VITE_RAZORPAY_PAY_KEY_ID;
 // Load script to the document
 export const loadScript = (script) => {
   return new Promise((resolve) => {
@@ -44,7 +44,7 @@ export const buyCourses = async (courses, user, token, cartResetTrue, dispatch, 
     // Step 3 - Razorpay checkout code to Website
     // Open the Razorpay payment modal, with customized options
     const options = {
-      key: process.env.REACT_APP_RAZORPAY_PAY_KEY_ID,
+      key: key,
       amount: orderResponse.data.data.amount,
       currency: orderResponse.data.data.currency,
       name: 'GS Academia',
