@@ -46,7 +46,7 @@ const homePageExplore = [
     ]
   },
   {
-    tag: 'Most popular',
+    tag: 'Most Popular',
     courses: [
       {
         heading: "Data Structures and Algorithms",
@@ -69,7 +69,7 @@ const homePageExplore = [
     ]
   },
   {
-    tag: 'Skills paths',
+    tag: 'Skills Paths',
     courses: [
       {
         heading: "Embedded Systems",
@@ -92,7 +92,7 @@ const homePageExplore = [
     ]
   },
   {
-    tag: 'Career paths',
+    tag: 'Career Paths',
     courses: [
       {
         heading: "Software Development",
