@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { BiArrowBack } from "react-icons/bi";
 import { RxCountdownTimer } from "react-icons/rx";
-import Spinner from '../components/common/Spinner';
+import Spinner from '../components/common/Spinner.tsx';
 import OtpInput from 'react-otp-input'
 import { useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
@@ -10,13 +10,13 @@ import { useDispatch } from 'react-redux';
 import { sendOtp, signUp } from '../services/operations/authServices';
 
 const VerifyEmail = () => {
-  const email = useSelector(state => state.auth?.signUpData?.email) ?? '';
-  const { loading, signUpData } = useSelector(state => state.auth)
+  const email = useSelector((state: any) => state.auth?.signUpData?.email) ?? '';
+  const { loading, signUpData } = useSelector((state: any) => state.auth)
   const [otp, setOtp] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleVerifyAndSignUp = (e) => {
+  const handleVerifyAndSignUp = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     signUp({ ...signUpData, otp }, dispatch, navigate);
   }

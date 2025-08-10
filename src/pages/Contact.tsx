@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import ContactDetails from '../components/core/ContactPage/ContactDetails';
-import ContactUsForm from '../components/core/ContactPage/ContactUsForm';
-import Footer from '../components/common/Footer';
-import Spinner from '../components/common/Spinner';
-import ReviewsSlider from '../components/common/ReviewsSlider';
+import ContactDetails from '../components/core/ContactPage/ContactDetails.tsx';
+import ContactUsForm from '../components/core/ContactPage/ContactUsForm.tsx';
+import Footer from '../components/common/Footer.tsx';
+import Spinner from '../components/common/Spinner.tsx';
+import ReviewsSlider from '../components/common/ReviewsSlider.tsx';
 import { getAllReviews } from '../services/operations/otherServices';
 
-const Contact = () => {
-  const [reviews, setReviews] = useState([]);
-  const [loading, setLoading] = useState(true);
+const Contact: React.FC = () => {
+  const [reviews, setReviews] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchAllReviews = async () => {

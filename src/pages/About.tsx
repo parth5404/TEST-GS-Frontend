@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import HighlightedText from '../components/core/HomePage/HighlightedText';
-import Footer from '../components/common/Footer';
+import HighlightedText from '../components/core/HomePage/HighlightedText.tsx';
+import Footer from '../components/common/Footer.tsx';
 import FoundingStory from '../assets/Images/FoundingStory.png';
 import BannerImage1 from '../assets/Images/aboutus1.webp';
 import BannerImage2 from '../assets/Images/aboutus2.webp';
 import BannerImage3 from '../assets/Images/aboutus3.webp';
-import GSAcademiaStats from '../components/core/AboutPage.js/GSAcademiaStats.jsx';
-import LearningGrid from '../components/core/AboutPage.js/LearningGrid';
-import ContactUsForm from '../components/core/ContactPage/ContactUsForm';
+import GSAcademiaStats from '../components/core/AboutPage/GSAcademiaStats.tsx';
+import LearningGrid from '../components/core/AboutPage/LearningGrid.tsx';
+import ContactUsForm from '../components/core/ContactPage/ContactUsForm.tsx';
 import { getAllReviews } from '../services/operations/otherServices';
-import ReviewsSlider from '../components/common/ReviewsSlider';
-import Spinner from '../components/common/Spinner';
+import ReviewsSlider from '../components/common/ReviewsSlider.tsx';
+import Spinner from '../components/common/Spinner.tsx';
 
-const About = () => {
-  const [reviews, setReviews] = useState([]);
-  const [loading, setLoading] = useState(true);
+const About: React.FC = () => {
+  const [reviews, setReviews] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchAllReviews = async () => {

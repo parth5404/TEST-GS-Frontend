@@ -1,46 +1,46 @@
 import './App.css';
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import Home from './pages/Home'
-import LogIn from './pages/LogIn'
-import SignUp from './pages/SignUp'
-import Contact from './pages/Contact'
-import About from './pages/About'
-import VerifyEmail from './pages/VerifyEmail';
-import ForgotPassword from './pages/ForgotPassword';
-import ResetPassword from './pages/ResetPassword';
-import PageNotFound from './pages/PageNotFound';
-import Navbar from './components/common/Navbar';
-import PublicRoute from './components/core/Auth/PublicRoute';
-import PrivateRoute from './components/core/Auth/PrivateRoute';
-import DashBoard from './pages/DashBoard';
-import MyProfile from './components/core/Dashboard/MyProfile';
-import Settings from './components/core/Dashboard/Settings/Settings';
-import Cart from './components/core/Dashboard/Cart/Cart';
-import EnrolledCourses from './components/core/Dashboard/EnrolledCourses';
+import Home from './pages/Home.tsx';
+import LogIn from './pages/LogIn.tsx';
+import SignUp from './pages/SignUp.tsx';
+import Contact from './pages/Contact.tsx';
+import About from './pages/About.tsx';
+import VerifyEmail from './pages/VerifyEmail.tsx';
+import ForgotPassword from './pages/ForgotPassword.tsx';
+import ResetPassword from './pages/ResetPassword.tsx';
+import PageNotFound from './pages/PageNotFound.tsx';
+import Navbar from './components/common/Navbar.tsx';
+import PublicRoute from './components/core/Auth/PublicRoute.tsx';
+import PrivateRoute from './components/core/Auth/PrivateRoute.tsx';
+import DashBoard from './pages/DashBoard.tsx';
+import MyProfile from './components/core/Dashboard/MyProfile.tsx';
+import Settings from './components/core/Dashboard/Settings/Settings.tsx';
+import Cart from './components/core/Dashboard/Cart/Cart.tsx';
+import EnrolledCourses from './components/core/Dashboard/EnrolledCourses.tsx';
 // eslint-disable-next-line
-import PurchaseHistory from './components/core/Dashboard/PurchaseHistory';
+import PurchaseHistory from './components/core/Dashboard/PurchaseHistory.tsx';
 // eslint-disable-next-line
 import { ROLE_TYPE } from './utils/constants';
-import InstructorDashboard from './components/core/Dashboard/InstructorDashboard/InstructorDashboard';
-import InstructorMyCourses from './components/core/Dashboard/InstructorMyCourses/InstructorMyCourses';
-import AddCourse from './components/core/Dashboard/AddCourse/AddCourse';
-import PrivateStudentRoute from './components/core/Auth/PrivateStudentRoute';
-import PrivateInstructorPage from './components/core/Auth/PrivateInstructorPage';
-import EditCourse from './components/core/Dashboard/EditCourse/EditCourse'
-import CategoryCourses from './pages/CategoryCourses';
-import CourseDetails from './pages/CourseDetails';
-import ViewCourse from './pages/ViewCourse';
+import InstructorDashboard from './components/core/Dashboard/InstructorDashboard/InstructorDashboard.tsx';
+import InstructorMyCourses from './components/core/Dashboard/InstructorMyCourses/InstructorMyCourses.tsx';
+import AddCourse from './components/core/Dashboard/AddCourse/AddCourse.tsx';
+import PrivateStudentRoute from './components/core/Auth/PrivateStudentRoute.tsx';
+import PrivateInstructorPage from './components/core/Auth/PrivateInstructorPage.tsx';
+import EditCourse from './components/core/Dashboard/EditCourse/EditCourse.tsx';
+import CategoryCourses from './pages/CategoryCourses.tsx';
+import CourseDetails from './pages/CourseDetails.tsx';
+import ViewCourse from './pages/ViewCourse.tsx';
 
 
 function App() {
 
-  const { token } = useSelector(state => state.auth);
+  const { token } = useSelector((state: any) => state.auth);
 
   // eslint-disable-next-line
-  const { user } = useSelector(state => state.profile);
+  const { user } = useSelector((state: any) => state.profile);
 
   return (
     <div className="bg-richblack-900 w-screen min-h-screen flex flex-col font-inter">

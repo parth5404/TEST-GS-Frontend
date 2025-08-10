@@ -2,17 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaLinkedin } from 'react-icons/fa';
 import footerLinks from '../../data/footerLinks';
-import FooterCard from './FooterCard';
+import FooterCard from './FooterCard.tsx';
 
-const Footer = () => {
-  const socialLinks = [
+const Footer: React.FC = () => {
+  const socialLinks: { icon: JSX.Element; link: string }[] = [
     { icon: <FaLinkedin />, link: 'https://www.linkedin.com/in/parth-lahoti/' },
     { icon: <FaTwitter />, link: 'https://twitter.com/' },
     { icon: <FaYoutube />, link: 'https://www.youtube.com/' },
     { icon: <FaFacebook />, link: 'https://www.facebook.com/' },
     { icon: <FaInstagram />, link: 'https://www.instagram.com' },
   ];
-  const bottomFooterLinks = ['Privacy Policy', 'Cookie Policy', 'Terms'];
+  const bottomFooterLinks: string[] = ['Privacy Policy', 'Cookie Policy', 'Terms'];
 
   return (
     <div className="bg-base-200 text-base-content border-t border-base-300">
