@@ -1,17 +1,24 @@
-import React from 'react'
-import HighlightedText from '../HomePage/HighlightedText'
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const Quote = () => {
   return (
-    <div className='mx-auto pb-20 lg:py-20' >
-      <h1 className='text-xl lg:text-4xl lg:text-center font-semibold' >
-        We are passionate about revolutionizing the way we learn. Our innovative platform
-        <HighlightedText text={'combines technology'} />,
-        <span className='font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#FF512F] to-[#F09819]'> expertise</span>, and community to create an
-        <span className='font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#E65C00] to-[#F9D423]' > unparalleled educational experience.</span>
-      </h1>
-    </div>
-  )
-}
+    <motion.div
+      className="container mx-auto py-20"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+    >
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-extralight text-center text-white leading-tight">
+        "We are passionate about revolutionizing the way we learn. Our innovative platform
+        combines <span className="text-glow">technology</span>,
+        <span className="text-glow"> expertise</span>, and
+        <span className="text-glow"> community</span> to create an
+        <span className="text-primary"> unparalleled educational experience</span>."
+      </h2>
+    </motion.div>
+  );
+};
 
-export default Quote
+export default Quote;

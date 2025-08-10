@@ -16,52 +16,33 @@ const Footer: React.FC = () => {
 
   return (
     <div className="bg-base-200 text-base-content border-t border-base-300">
-      <div className="w-11/12 max-w-maxContent mx-auto py-14">
-        <div className="flex flex-col lg:flex-row justify-between gap-12">
-          <div className="lg:w-1/3">
+      <div className="container mx-auto py-8">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="text-center md:text-left">
             <Link to="/">
-              <h1 className="text-3xl font-playfair-display font-bold text-white">
+              <h1 className="text-2xl font-bold">
                 GS <span className="text-primary">Academia</span>
               </h1>
             </Link>
-            <p className="mt-4">
-              Unlock your potential with our premium courses. Learn from the best, and become the best.
+            <p className="mt-2 text-sm text-base-content/80">
+              &copy; {new Date().getFullYear()} GS Academia. All Rights Reserved.
             </p>
-            <div className="flex gap-4 text-xl mt-6">
+          </div>
+          <div className="flex items-center gap-6">
+            <div className="flex gap-4">
+              {bottomFooterLinks.map((text, index) => (
+                <Link to={text.toLowerCase().replace(' ', '-')} key={index} className="text-sm hover:text-primary transition-all duration-200">
+                  {text}
+                </Link>
+              ))}
+            </div>
+            <div className="flex gap-4 text-xl">
               {socialLinks.map((item, index) => (
                 <Link to={item.link} key={index} className="hover:text-primary transition-all duration-200">
                   {item.icon}
                 </Link>
               ))}
             </div>
-          </div>
-          <div className="lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-8">
-            {footerLinks.slice(1).map((section, i) => (
-              <div key={i}>
-                <h2 className="text-lg font-bold text-white mb-4">{section.title}</h2>
-                <ul>
-                  {section.links.map((link, j) => (
-                    <li key={j} className="mb-2">
-                      <Link to={link.link} className="hover:text-primary transition-all duration-200">
-                        {link.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="flex flex-col lg:flex-row justify-between items-center text-sm mt-12 pt-8 border-t border-base-300">
-          <div className="flex flex-wrap gap-x-6">
-            {bottomFooterLinks.map((text, index) => (
-              <Link to={text.toLowerCase().replace(' ', '-')} key={index}>
-                <p className="cursor-pointer hover:text-primary transition-all duration-200">{text}</p>
-              </Link>
-            ))}
-          </div>
-          <div className="text-center mt-4 lg:mt-0">
-            &copy; {new Date().getFullYear()} GS Academia. All rights reserved.
           </div>
         </div>
       </div>

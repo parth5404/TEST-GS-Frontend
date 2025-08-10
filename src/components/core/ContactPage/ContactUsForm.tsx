@@ -1,116 +1,68 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import countryCodes from '../../../data/countryCodes.json';
 import { contactUs } from '../../../services/operations/contactServices';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import ReactFlagsSelect from 'react-flags-select';
 
 const ContactUsForm = () => {
   const [loading, setLoading] = useState(false);
-  const { register, reset, handleSubmit, formState: { errors } } = useForm();
+  const { register, reset, handleSubmit, control, formState: { errors } } = useForm();
 
   const onSubmit = async (contactData) => {
     await contactUs(contactData, setLoading, reset);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-7">
-      <div className="flex flex-col md:flex-row gap-5">
-        <label className="w-full">
-          <p className="mb-2 text-sm text-base-content">First Name <sup className="text-error">*</sup></p>
-          <input
-            type="text"
-            name="firstName"
-            placeholder="Enter first name"
-            className="w-full rounded-lg bg-base-300 bg-opacity-50 backdrop-blur-md p-3 text-white placeholder:text-base-content focus:outline-none focus:ring-2 focus:ring-primary"
-            {...register('firstName', { required: true })}
-          />
-          {errors.firstName && <p className="mt-1 text-xs text-error">Please enter your first name</p>}
-        </label>
-        <label className="w-full">
-          <p className="mb-2 text-sm text-base-content">Last Name <sup className="text-error">*</sup></p>
-          <input
-            type="text"
-            name="lastName"
-            placeholder="Enter last name"
-            className="w-full rounded-lg bg-base-300 bg-opacity-50 backdrop-blur-md p-3 text-white placeholder:text-base-content focus:outline-none focus:ring-2 focus:ring-primary"
-            {...register('lastName', { required: true })}
-          />
-          {errors.lastName && <p className="mt-1 text-xs text-error">Please enter your last name</p>}
-        </label>
-      </div>
-
-      <div>
-        <label>
-          <p className="mb-2 text-sm text-base-content">Email Address <sup className="text-error">*</sup></p>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter email address"
-            className="w-full rounded-lg bg-base-300 bg-opacity-50 backdrop-blur-md p-3 text-white placeholder:text-base-content focus:outline-none focus:ring-2 focus:ring-primary"
-            {...register('email', { required: true })}
-          />
-          {errors.email && <p className="mt-1 text-xs text-error">Please enter your email address</p>}
-        </label>
-      </div>
-
-      <div>
-        <label htmlFor="phoneNo">
-          <p className="mb-2 text-sm text-base-content">Phone Number <sup className="text-error">*</sup></p>
-        </label>
-        <div className="flex items-center gap-x-4">
-          <div className="w-[85px]">
-            <select
-              name="countryCode"
-              className="w-full rounded-lg bg-base-300 bg-opacity-50 backdrop-blur-md p-3 text-white placeholder:text-base-content focus:outline-none focus:ring-2 focus:ring-primary"
-              defaultValue={'+91'}
-              {...register('countryCode', { required: true })}
-            >
-              {countryCodes.map((code, index) => (
-                <option value={code.code} key={index}>
-                  {code.code} - {code.country}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="w-[calc(100%-90px)]">
-            <input
-              type="number"
-              name="phoneNo"
-              id="phoneNo"
-              placeholder="12345 67890"
-              className="w-full rounded-lg bg-base-300 bg-opacity-50 backdrop-blur-md p-3 text-white placeholder:text-base-content focus:outline-none focus:ring-2 focus:ring-primary"
-              {...register('phoneNo', {
-                required: { value: true, message: 'Please enter your Phone Number' },
-                minLength: { value: 10, message: 'Invalid Phone Number' },
-                maxLength: { value: 12, message: 'Invalid Phone Number' },
-              })}
-            />
-            {errors.phoneNo && <p className="mt-1 text-xs text-error">{errors.phoneNo.message}</p>}
-          </div>
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="firstName" className="block text-sm font-medium text-base-content mb-2">First Name</label>
+          <Input id="firstName" placeholder="John" {...register('firstName', { required: true })} />
+          {errors.firstName && <p className="mt-1 text-xs text-destructive">First name is required</p>}
+        </div>
+        <div>
+          <label htmlFor="lastName" className="block text-sm font-medium text-base-content mb-2">Last Name</label>
+          <Input id="lastName" placeholder="Doe" {...register('lastName', { required: true })} />
+          {errors.lastName && <p className="mt-1 text-xs text-destructive">Last name is required</p>}
         </div>
       </div>
-
       <div>
-        <label>
-          <p className="mb-2 text-sm text-base-content">Message <sup className="text-error">*</sup></p>
-          <textarea
-            name="message"
-            cols={30}
-            rows={5}
-            placeholder="Enter your message here"
-            className="w-full rounded-lg bg-base-300 bg-opacity-50 backdrop-blur-md p-3 text-white placeholder:text-base-content focus:outline-none focus:ring-2 focus:ring-primary"
-            {...register('message', { required: true })}
-          />
-          {errors.message && <p className="mt-1 text-xs text-error">Please enter your message</p>}
-        </label>
+        <label htmlFor="email" className="block text-sm font-medium text-base-content mb-2">Email</label>
+        <Input id="email" type="email" placeholder="john.doe@example.com" {...register('email', { required: true })} />
+        {errors.email && <p className="mt-1 text-xs text-destructive">Email is required</p>}
       </div>
-
-      <button
-        disabled={loading}
-        type="submit"
-        className="mt-4 w-full text-center text-lg px-6 py-3 rounded-md font-bold bg-gradient-to-r from-primary to-secondary text-white shadow-lg disabled:bg-base-300 disabled:cursor-not-allowed transition-all duration-200 hover:scale-95 hover:shadow-none"
-      >
-        Send Message
-      </button>
+      <div>
+        <label htmlFor="phoneNo" className="block text-sm font-medium text-base-content mb-2">Phone Number</label>
+        <div className="flex gap-4 items-center">
+          <Controller
+            name="countryCode"
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <ReactFlagsSelect
+                {...field}
+                selected={field.value}
+                onSelect={field.onChange}
+                searchable
+                className="w-1/2 rounded-lg bg-black bg-opacity-50 backdrop-blur-md p-3 text-white placeholder:text-base-content focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            )}
+          />
+          <Input id="phoneNo" type="tel" placeholder="123-456-7890" {...register('phoneNo', { required: true })} />
+        </div>
+        {errors.phoneNo && <p className="mt-1 text-xs text-destructive">Phone number is required</p>}
+      </div>
+      <div>
+        <label htmlFor="message" className="block text-sm font-medium text-base-content mb-2">Message</label>
+        <Textarea id="message" placeholder="Your message..." {...register('message', { required: true })} />
+        {errors.message && <p className="mt-1 text-xs text-destructive">Message is required</p>}
+      </div>
+      <Button type="submit" size="lg" className="w-full" disabled={loading}>
+        {loading ? 'Sending...' : 'Send Message'}
+      </Button>
     </form>
   );
 };

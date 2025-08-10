@@ -17,12 +17,12 @@ module.exports = {
     },
     extend: {
       colors: {
-        "base-100": "#00001a",
-        "base-200": "#00002a",
-        "base-300": "#00003a",
-        "base-content": "#e0e0e0",
-        primary: "#00f5ff",
-        secondary: "#00c7ff",
+        "base-100": "#000000",
+        "base-200": "#1a1a1a",
+        "base-300": "#2a2a2a",
+        "base-content": "#ffffff",
+        primary: "#ffffff",
+        secondary: "#b3b3b3",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -50,8 +50,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['"Inter"', "sans-serif"],
-        "8bit": ['"Press Start 2P"', "cursive"],
+        sans: ['"Manrope"', "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

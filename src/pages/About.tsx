@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import HighlightedText from '../components/core/HomePage/HighlightedText.tsx';
+import React from 'react';
+import { motion } from 'framer-motion';
 import Footer from '../components/common/Footer.tsx';
 import FoundingStory from '../assets/Images/FoundingStory.png';
 import BannerImage1 from '../assets/Images/aboutus1.webp';
@@ -7,111 +7,80 @@ import BannerImage2 from '../assets/Images/aboutus2.webp';
 import BannerImage3 from '../assets/Images/aboutus3.webp';
 import GSAcademiaStats from '../components/core/AboutPage/GSAcademiaStats.tsx';
 import LearningGrid from '../components/core/AboutPage/LearningGrid.tsx';
-import ContactUsForm from '../components/core/ContactPage/ContactUsForm.tsx';
-import { getAllReviews } from '../services/operations/otherServices';
-import ReviewsSlider from '../components/common/ReviewsSlider.tsx';
-import Spinner from '../components/common/Spinner.tsx';
+import StarryBackground from '../components/common/StarryBackground.tsx';
+import Quote from '../components/core/AboutPage/Quote.tsx';
 
 const About: React.FC = () => {
-  const [reviews, setReviews] = useState<any[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const fetchAllReviews = async () => {
-      setLoading(true);
-      const response = await getAllReviews();
-      if (response) setReviews(response);
-      setLoading(false);
-    };
-    fetchAllReviews();
-  }, []);
-
   return (
-    <div className="bg-base-100 text-base-content font-inter">
+    <div className="text-base-content font-sans">
       {/* Hero Section */}
-      <div className="relative bg-base-200 py-20">
-        <div className="w-11/12 mx-auto max-w-maxContent text-center">
-          <h1 className="text-4xl lg:text-5xl font-bold text-white">
-            Driving Innovation in Online Education for a <HighlightedText text={'Brighter Future'} />
+      <motion.div
+        className="relative py-52 text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <div className="container mx-auto">
+          <h1 className="text-4xl md:text-6xl font-bold text-glow">
+            About GS Academia
           </h1>
-          <p className="mx-auto mt-4 max-w-3xl text-lg">
-            GS Academia is at the forefront of driving innovation in online education. We're passionate about creating a brighter future by offering cutting-edge courses, leveraging emerging technologies, and nurturing a vibrant learning community.
+          <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-base-content/80">
+            Pioneering the future of online education with passion and innovation.
           </p>
-          <div className="relative mt-12 w-full max-w-5xl mx-auto h-auto">
-            <div className="grid grid-cols-3 gap-4">
-              <img src={BannerImage1} alt="Students learning" className="rounded-lg shadow-lg" />
-              <img src={BannerImage2} alt="Online class" className="rounded-lg shadow-lg mt-8" />
-              <img src={BannerImage3} alt="Happy student" className="rounded-lg shadow-lg" />
-            </div>
-          </div>
         </div>
-      </div>
+      </motion.div>
+      <GSAcademiaStats />
 
-      {/* Founding Story Section */}
+
+      {/* Founding Story, Vision, Mission Section */}
       <div className="py-20">
-        <div className="w-11/12 mx-auto max-w-maxContent flex flex-col lg:flex-row items-center justify-between gap-12">
-          <div className="lg:w-1/2">
+        <div className="container mx-auto text-center">
+          {/* Founding Story */}
+          <motion.div
+            className="lg:w-2/3 mx-auto"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            >
             <h2 className="text-4xl font-bold text-white mb-6">Our Founding Story</h2>
-            <p className="mb-4">
-              Our e-learning platform was born out of a shared vision and passion for transforming education. It all began with a group of educators, technologists, and lifelong learners who recognized the need for accessible, flexible, and high-quality learning opportunities in a rapidly evolving digital world.
+            <p className="mb-4 text-base-content/80 text-lg">
+              Our platform was born from a shared vision for accessible, high-quality education. It began with a group of educators and technologists who saw the need for flexible learning in a digital world.
             </p>
-            <p>
-              As experienced educators ourselves, we witnessed firsthand the limitations and challenges of traditional education systems. We believed that education should not be confined to the walls of a classroom or restricted by geographical boundaries. We envisioned a platform that could bridge these gaps and empower individuals from all walks of life to unlock their full potential.
+            <p className="text-base-content/80 text-lg">
+              We witnessed the limitations of traditional education and envisioned a platform to bridge these gaps, empowering individuals everywhere to unlock their full potential.
             </p>
+          </motion.div>
+
+          {/* Vision and Mission */}
+          <div className="grid lg:grid-cols-2 gap-12 items-start mt-20 text-left">
+            <motion.div
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <h2 className="text-4xl font-bold text-white mb-6">Our Vision</h2>
+              <p className="text-base-content/80">
+                With this vision, we created an e-learning platform that revolutionizes learning. Our team developed a robust and intuitive platform that combines cutting-edge technology with engaging content for a dynamic learning experience.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <h2 className="text-4xl font-bold text-white mb-6">Our Mission</h2>
+              <p className="text-base-content/80">
+                Our mission is to build a vibrant community of learners. We believe in the power of shared knowledge and foster collaboration through forums, live sessions, and networking opportunities.
+              </p>
+            </motion.div>
           </div>
-          <div className="lg:w-1/2 relative p-4">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-20 rounded-lg blur-2xl"></div>
-            <img src={FoundingStory} alt="Founding story" className="relative z-10 rounded-lg shadow-lg" />
-          </div>
         </div>
       </div>
 
-      {/* Vision and Mission Section */}
-      <div className="bg-base-200 py-20">
-        <div className="w-11/12 mx-auto max-w-maxContent flex flex-col lg:flex-row items-center justify-between gap-12">
-          <div className="lg:w-1/2">
-            <h2 className="text-4xl font-bold text-white mb-6">Our Vision</h2>
-            <p>
-              With this vision in mind, we set out on a journey to create an e-learning platform that would revolutionize the way people learn. Our team of dedicated experts worked tirelessly to develop a robust and intuitive platform that combines cutting-edge technology with engaging content, fostering a dynamic and interactive learning experience.
-            </p>
-          </div>
-          <div className="lg:w-1/2">
-            <h2 className="text-4xl font-bold text-white mb-6">Our Mission</h2>
-            <p>
-              Our mission goes beyond just delivering courses online. We wanted to create a vibrant community of learners, where individuals can connect, collaborate, and learn from one another. We believe that knowledge thrives in an environment of sharing and dialogue, and we foster this spirit of collaboration through forums, live sessions, and networking opportunities.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Stats Section */}
-      <div className="py-20">
-        <GSAcademiaStats />
-      </div>
-
-      {/* Learning Grid Section */}
-      <div className="bg-base-200 py-20">
-        <div className="w-11/12 mx-auto max-w-maxContent">
-          <LearningGrid />
-        </div>
-      </div>
-
-      {/* Contact Form Section */}
-      <div className="py-20">
-        <div className="w-11/12 mx-auto max-w-maxContent">
-          <h2 className="text-4xl font-bold text-white text-center mb-4">Get in Touch</h2>
-          <p className="text-center mb-10">We'd love to hear from you. Please fill out this form.</p>
-          <ContactUsForm />
-        </div>
-      </div>
-
-      {/* Reviews Section */}
-      <div className="py-20">
-        <div className="w-11/12 mx-auto max-w-maxContent">
-          <h2 className="text-4xl font-bold text-white text-center mb-10">Reviews from Other Learners</h2>
-          {loading ? <Spinner /> : <ReviewsSlider reviews={reviews} />}
-        </div>
-      </div>
+     
+      <LearningGrid />
 
       <Footer />
     </div>

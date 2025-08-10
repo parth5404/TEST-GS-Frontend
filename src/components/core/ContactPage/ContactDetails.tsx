@@ -1,51 +1,47 @@
-import React from 'react'
-import * as Icon1 from "react-icons/bi"
-import * as Icon3 from "react-icons/hi2"
-import * as Icon2 from "react-icons/io5"
+import React from 'react';
+import { Mail, MapPin, Phone } from 'lucide-react';
 
 const contactDetails = [
   {
-    icon: "HiChatBubbleLeftRight",
-    heading: "Chat on us",
-    description: "Our friendly team is here to help.",
-    details: "gsacademia5404@gmail.com",
+    icon: <Mail size={24} />,
+    heading: 'Chat with Us',
+    description: 'Our friendly team is here to help.',
+    details: 'gsacademia5404@gmail.com',
   },
   {
-    icon: "BiWorld",
-    heading: "Visit us",
-    description: "Shri Govindram Seksaria Institute of Technology and Science (SGSITS)",
-    details: "23, Sir M. Visvesvaraya Marg, Vallabh Nagar, Indore, Madhya Pradesh 452003",
+    icon: <MapPin size={24} />,
+    heading: 'Visit Us',
+    description: 'Come and say hello at our office HQ.',
+    details: '23, Sir M. Visvesvaraya Marg, Vallabh Nagar, Indore, Madhya Pradesh 452003',
   },
   {
-    icon: "IoCall",
-    heading: "Call us",
-    description: "Mon - Fri From 8am to 5pm",
-    details: "+123 456 7869",
+    icon: <Phone size={24} />,
+    heading: 'Call Us',
+    description: 'Mon - Fri From 8am to 5pm',
+    details: '+123 456 7869',
   },
-]
+];
 
 const ContactDetails = () => {
   return (
-    <div className='flex flex-col gap-6 rounded-xl bg-richblack-800 p-4 lg:p-6' >
-      {
-        contactDetails.map((data, ind) => {
-          const Icon = Icon1[data.icon] || Icon2[data.icon] || Icon3[data.icon]
-
-          return (
-            <div className='flex flex-col gap-[2px] text-richblack-200 p-3 text-sm' >
-              <div className='flex flex-row gap-3 items-center ' >
-                <Icon size={25} />
-                <h1 className='text-richblack-5 font-semibold text-lg' >{data.heading}</h1>
-              </div>
-
-              <p className='font-medium' >{data.description}</p>
-              <p className='font-medium' >{data.details}</p>
-            </div>
-          )
-        })
-      }
+    <div className="flex flex-col gap-8">
+      {contactDetails.map((data, ind) => (
+        <div key={ind} className="flex items-start gap-4">
+          <div className="bg-primary/10 text-primary p-3 rounded-full">
+            {data.icon}
+          </div>
+          <div className="flex flex-col">
+            <h3 className="text-lg font-semibold text-white">{data.heading}</h3>
+            <p className="text-base-content/80 text-sm mt-1">{data.description}</p>
+            <a href={data.heading === 'Chat with Us' ? `mailto:${data.details}` : data.heading === 'Call Us' ? `tel:${data.details}` : '#'}
+               className="text-primary font-medium text-sm mt-1 hover:underline">
+              {data.details}
+            </a>
+          </div>
+        </div>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default ContactDetails
+export default ContactDetails;

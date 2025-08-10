@@ -6,28 +6,27 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import { FreeMode, Pagination, Autoplay } from 'swiper/modules';
 
-const ReviewsSlider = ({ reviews }) => {
+const ReviewsSlider = ({ reviews }: { reviews: any[] }) => {
   return (
-    <div className="my-12">
+    <div className="my-12 w-full">
       {reviews && reviews.length ? (
         <Swiper
           slidesPerView={1}
           spaceBetween={25}
           loop={true}
-          freeMode={true}
           autoplay={{
-            delay: 2500,
+            delay: 3000,
             disableOnInteraction: false,
           }}
-          modules={[FreeMode, Pagination, Autoplay]}
+          modules={[Autoplay, Pagination]}
           breakpoints={{
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 4 },
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
           }}
           className="w-full"
         >
           {reviews.map((review, ind) => (
-            <SwiperSlide key={ind}>
+            <SwiperSlide key={ind} className="h-full">
               <ReviewCard review={review} />
             </SwiperSlide>
           ))}

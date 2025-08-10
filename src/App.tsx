@@ -43,7 +43,7 @@ function App() {
   const { user } = useSelector((state: any) => state.profile);
 
   return (
-    <div className="bg-richblack-900 w-screen min-h-screen flex flex-col font-inter">
+    <div className="bg-base-100 text-base-content w-screen min-h-screen flex flex-col font-sans">
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />

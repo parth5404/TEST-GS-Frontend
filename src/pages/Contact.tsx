@@ -1,56 +1,54 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
 import ContactDetails from '../components/core/ContactPage/ContactDetails.tsx';
 import ContactUsForm from '../components/core/ContactPage/ContactUsForm.tsx';
 import Footer from '../components/common/Footer.tsx';
-import Spinner from '../components/common/Spinner.tsx';
-import ReviewsSlider from '../components/common/ReviewsSlider.tsx';
-import { getAllReviews } from '../services/operations/otherServices';
+import StarryBackground from '../components/common/StarryBackground.tsx';
 
 const Contact: React.FC = () => {
-  const [reviews, setReviews] = useState<any[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const fetchAllReviews = async () => {
-      setLoading(true);
-      const response = await getAllReviews();
-      if (response) setReviews(response);
-      setLoading(false);
-    };
-    fetchAllReviews();
-  }, []);
-
   return (
-    <div className="bg-base-100 text-base-content font-inter">
+    <div className="text-base-content font-sans">
+      <StarryBackground />
+
       {/* Hero Section */}
-      <div className="bg-base-200 py-20">
-        <div className="w-11/12 mx-auto max-w-maxContent text-center">
-          <h1 className="text-4xl lg:text-5xl font-bold text-white">Get in Touch</h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg">
-            We'd love to hear from you. Please fill out this form, and we'll get back to you as soon as possible.
+      <motion.div
+        className="relative pt-28 pb-20 text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <div className="container mx-auto">
+          <h1 className="text-4xl md:text-6xl font-bold text-glow">
+            Contact Us
+          </h1>
+          <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-base-content/80">
+            We're here to help. Reach out to us with any questions or feedback.
           </p>
         </div>
-      </div>
-
+      </motion.div>
       {/* Contact Form and Details Section */}
-      <div className="py-20">
-        <div className="w-11/12 mx-auto max-w-maxContent flex flex-col lg:flex-row justify-between gap-12">
-          <div className="lg:w-[40%] bg-base-300 bg-opacity-30 backdrop-blur-md p-8 rounded-lg shadow-lg">
+      <div className="container mx-auto pb-20">
+        <div className="grid lg:grid-cols-2 gap-12">
+          <motion.div
+            className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-lg"
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             <ContactDetails />
-          </div>
-          <div className="lg:w-[55%] bg-base-300 bg-opacity-30 backdrop-blur-md p-8 rounded-lg shadow-lg">
-            <h2 className="text-3xl font-bold text-white mb-4">Got an Idea? We've Got the Skills. Let's Team Up.</h2>
-            <p className="mb-8">Tell us more about yourself and what you've got in mind.</p>
+          </motion.div>
+          <motion.div
+            className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-lg"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl font-bold text-white mb-4">Get in Touch</h2>
+            <p className="mb-8 text-base-content/80">
+              Have a question or a project in mind? Fill out the form, and we'll get back to you.
+            </p>
             <ContactUsForm />
-          </div>
-        </div>
-      </div>
-
-      {/* Reviews Section */}
-      <div className="py-20 bg-base-200">
-        <div className="w-11/12 mx-auto max-w-maxContent">
-          <h2 className="text-4xl font-bold text-white text-center mb-10">Reviews from Other Learners</h2>
-          {loading ? <Spinner /> : <ReviewsSlider reviews={reviews} />}
+          </motion.div>
         </div>
       </div>
 

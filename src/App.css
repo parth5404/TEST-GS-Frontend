@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -37,7 +37,7 @@
   width: 50px;
   height: 50px;
   border: 5px solid #3e4143;
-  border-top-color: #a435f0;
+  border-top-color: #ffffff;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -48,22 +48,13 @@
   }
 }
 
-html,
-body {
+html {
   overflow-x: hidden;
-}
-
-body {
-  width: 100vw;
-  min-height: 100vh;
-  background-color: #00001a;
-  color: #e0e0e0;
-  font-family: 'Press Start 2P', cursive;
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #a435f0 #1c1d1f;
+  scrollbar-color: #ffffff #000000;
 }
 
 *::-webkit-scrollbar {
@@ -71,37 +62,23 @@ body {
 }
 
 *::-webkit-scrollbar-track {
-  background: #1c1d1f;
+  background: #000000;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #a435f0;
+  background-color: #ffffff;
   border-radius: 10px;
 }
 
-@keyframes move-twink-back {
-    from {background-position:0 0;}
-    to {background-position:-10000px 5000px;}
+@keyframes glow {
+  from {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.4);
+  }
+  to {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6);
+  }
 }
 
-.stars, .twinkling {
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  width:100%;
-  height:100%;
-  display:block;
-}
-
-.stars {
-  background:#000 url(https://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
-  z-index:-2;
-}
-
-.twinkling {
-  background:transparent url(https://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
-  z-index:-1;
-  animation:move-twink-back 200s linear infinite;
+.text-glow {
+  animation: glow 2s ease-in-out infinite alternate;
 }
