@@ -42,7 +42,7 @@ const SignUpForm = () => {
       <div className="flex gap-x-1 bg-base-300 p-1 my-1 rounded-full max-w-max">
         <label
           className={`py-2 px-5 rounded-full cursor-pointer transition-all duration-200 ${
-            role === 'Student' ? 'bg-primary text-white' : 'bg-transparent text-base-content hover:bg-base-200'
+            role === 'Student' ? 'bg-primary text-black' : 'bg-transparent text-base-content hover:bg-base-200'
           }`}
         >
           <input type="radio" name="role" value="Student" checked={role === 'Student'} onChange={handleOnChange} className="appearance-none" />
@@ -50,7 +50,7 @@ const SignUpForm = () => {
         </label>
         <label
           className={`py-2 px-5 rounded-full cursor-pointer transition-all duration-200 ${
-            role === 'Instructor' ? 'bg-primary text-white' : 'bg-transparent text-base-content hover:bg-base-200'
+            role === 'Instructor' ? 'bg-primary text-black' : 'bg-transparent text-base-content hover:bg-base-200'
           }`}
         >
           <input type="radio" name="role" value="Instructor" checked={role === 'Instructor'} onChange={handleOnChange} className="appearance-none" />
@@ -135,7 +135,7 @@ const SignUpForm = () => {
       </div>
       <button
         type="submit"
-        className="mt-6 w-full rounded-lg bg-gradient-to-r from-primary to-secondary py-3 px-4 font-semibold text-white transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center gap-2"
+        className="mt-6 w-full rounded-lg bg-gradient-to-r from-primary to-secondary py-3 px-4 font-semibold text-black transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center gap-2"
       >
         <span>Create Account</span>
         <FaArrowRight className="text-sm" />

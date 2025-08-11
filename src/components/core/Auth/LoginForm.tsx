@@ -53,12 +53,12 @@ const LoginForm = () => {
           {showPassword ? <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" /> : <AiOutlineEye fontSize={24} fill="#AFB2BF" />}
         </span>
         <Link to="/forgot-password">
-          <p className="ml-auto mt-2 max-w-max text-primary text-xs">Forgot Password</p>
+          <p className="ml-auto mt-2 max-w-max text-primary text-xs hover:text-red-500">Forgot Password ?</p>
         </Link>
       </label>
       <button
         type="submit"
-        className="mt-6 w-full rounded-lg bg-gradient-to-r from-primary to-secondary py-3 px-4 font-semibold text-white transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center gap-2"
+        className="mt-6 w-full rounded-lg bg-gradient-to-r from-primary to-secondary py-3 px-4 font-semibold text-black transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center gap-2"
       >
         <span>Sign In</span>
         <FaArrowRight className="text-sm" />

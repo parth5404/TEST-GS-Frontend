@@ -79,22 +79,42 @@ const Home: React.FC = () => {
     <div className="text-base-content font-sans">
       <StarryBackground />
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center text-center text-white">
-        <div className="relative z-10 flex flex-col items-center gap-6 p-4">
-          <h1 className="text-4xl md:text-6xl font-bold text-glow">Unlock Your Potential</h1>
-          <p className="max-w-3xl text-lg md:text-xl text-base-content/80">
-            Join thousands of learners on GS Academia and start mastering new skills today.
-          </p>
-          <div className="flex gap-4 mt-4">
-            <Link to="/signup">
-              <Button size="lg" variant="primary">Start Your Journey</Button>
-            </Link>
-            <Link to="/courses">
-              <Button size="lg" variant="outline">Explore Courses</Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <section
+  className="relative h-screen flex items-center justify-center text-center text-white"
+  style={{
+    animation: 'float 4s ease-in-out infinite'
+  }}
+>
+  <style>
+    {`
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+    `}
+  </style>
+
+  <div className="relative z-10 flex flex-col items-center gap-6 p-4">
+    <h1 className="text-4xl md:text-6xl font-bold text-glow">
+      Unlock Your Potential
+    </h1>
+    <p className="max-w-3xl text-lg md:text-xl text-base-content/80">
+      Join thousands of learners on GS Academia and start mastering new skills today.
+    </p>
+    <div className="flex gap-4 mt-4">
+      <Link to="/signup">
+        <Button size="lg" variant="primary">Start Your Journey</Button>
+      </Link>
+      <Link to="/courses">
+        <Button size="lg" variant="outline">Explore Courses</Button>
+      </Link>
+    </div>
+  </div>
+</section>
 
       {/* Featured Courses Section */}
       <section className="py-20">
