@@ -108,7 +108,8 @@ const SignUpForm = () => {
             className="w-full rounded-lg bg-base-300 bg-opacity-50 backdrop-blur-md p-3 text-white placeholder:text-base-content focus:outline-none focus:ring-2 focus:ring-primary"
           />
           <span
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+
+            className="absolute right-3 top-[68%] -translate-y-1/2 cursor-pointer"
             onClick={() => setShowPassword((prev) => !prev)}
           >
             {showPassword ? <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" /> : <AiOutlineEye fontSize={24} fill="#AFB2BF" />}
@@ -126,7 +127,9 @@ const SignUpForm = () => {
             className="w-full rounded-lg bg-base-300 bg-opacity-50 backdrop-blur-md p-3 text-white placeholder:text-base-content focus:outline-none focus:ring-2 focus:ring-primary"
           />
           <span
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+
+            className="absolute right-3 top-[68%] -translate-y-1/2 cursor-pointer"
+
             onClick={() => setShowConfirmPassword((prev) => !prev)}
           >
             {showConfirmPassword ? <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" /> : <AiOutlineEye fontSize={24} fill="#AFB2BF" />}
