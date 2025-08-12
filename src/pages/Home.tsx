@@ -109,7 +109,9 @@ const Home: React.FC = () => {
       <Link to="/signup">
         <Button size="lg" variant="primary">Start Your Journey</Button>
       </Link>
+
       <Link to="/login">
+
         <Button size="lg" variant="outline">Explore Courses</Button>
       </Link>
     </div>
