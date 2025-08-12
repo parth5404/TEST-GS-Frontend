@@ -44,9 +44,10 @@ const VerifyEmail = () => {
                     <OtpInput
                       value={otp}
                       onChange={setOtp}
+                      inputType='number'
                       numInputs={6}
                       renderInput={(props) => (
-                        <input {...props} placeholder='-' className='w-[48px] lg:w-[60px] border-0 bg-richblack-800 rounded-lg aspect-square text-richblack-5 text-center focus:border-0 focus:outline-2 focus:outline-yellow-50 shadow-[0_1px_0_rgba(255,255,255,0.3)]'
+                        <input {...props} placeholder='-' className='w-[48px] lg:w-[60px] border-0 bg-richblack-800 rounded-lg aspect-square text-black text-center focus:border-0 focus:outline-2 focus:outline-yellow-50 shadow-[0_1px_0_rgba(255,255,255,0.3)]'
                           style={{}}
                         />
                       )}
@@ -56,7 +57,7 @@ const VerifyEmail = () => {
                       }}
                     />
                   </div>
-                  <button type='submit' className='w-full bg-yellow-50 p-3 rounded-lg mt-6 font-medium text-richblack-900' >
+                  <button type='submit' className='w-full bg-white p-3 rounded-lg mt-6 font-semibold text-black' >
                     Verify Email
                   </button>
                 </form>
