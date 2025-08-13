@@ -27,6 +27,8 @@ import {
   ShoppingCart,
   LogIn,
   UserPlus,
+  ChevronDown,
+  Sparkles,
 } from "lucide-react";
 import Logo from "../../assets/Logo/gs-logo.svg";
 
@@ -46,7 +48,7 @@ const Navbar: React.FC = () => {
     fetchCatalog();
 
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+      setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -59,119 +61,150 @@ const Navbar: React.FC = () => {
   const NavLink: React.FC<{
     to: string;
     children: React.ReactNode;
-    icon: JSX.Element;
+    icon?: JSX.Element;
   }> = ({ to, children, icon }) => {
     const isActive = matchRoute(to);
     return (
       <Link
         to={to}
-        className={`relative group flex items-center px-3 py-2 text-sm font-medium transition-colors duration-300 ${
-          isActive ? "text-primary" : "text-base-content hover:text-primary"
+        className={`relative group flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg ${
+          isActive 
+            ? "text-white bg-gradient-to-r from-primary-500 to-secondary-500 shadow-glow" 
+            : "text-base-content hover:text-white hover:bg-white/10"
         }`}
       >
         {icon}
         {children}
-        <span
-          className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary transform transition-transform duration-300 origin-center ${
-            isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-          }`}
-        ></span>
+        {!isActive && (
+          <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary-500 to-secondary-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></span>
+        )}
       </Link>
     );
   };
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-base-200/80 backdrop-blur-lg shadow-lg"
+          ? "bg-base-100/80 backdrop-blur-xl shadow-2xl border-b border-white/10"
           : "bg-transparent"
       }`}
     >
-      <div className="w-11/12 h-16 mx-auto max-w-7xl flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group">
-          <img src={Logo} alt="GS Academia Logo" className="h-8 w-8" />
-          <h1 className="text-lg font-bold text-white">
-            GS <span className="text-secondary">Academia</span>
-          </h1>
-        </Link>
-        <nav className="hidden lg:flex items-center space-x-1">
-  {navbarLinks.map((link, index) =>
-    link.title === "Catalog" ? (
-      <DropdownMenu key={index}>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="ghost"
-            className="relative group flex items-center text-sm hover:text-primary hover:bg-base-200/50 px-3 py-1 rounded-md"
-          >
-            {link.title}
-            <span
-              className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center ${
-                location.pathname.includes("/categorycourses")
-                  ? "scale-x-100"
-                  : ""
-              }`}
+      <div className="w-11/12 h-20 mx-auto max-w-7xl flex items-center justify-between">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-3 group">
+          <div className="relative">
+            <img 
+              src={Logo} 
+              alt="GS Academia Logo" 
+              className="h-10 w-10 transition-transform duration-300 group-hover:scale-110" 
             />
-          </Button>
-        </DropdownMenuTrigger>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-sm"></div>
+          </div>
+          <div className="flex flex-col">
+            <h1 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary-400 group-hover:to-secondary-400 transition-all duration-300">
+              GS Academia
+            </h1>
+            <span className="text-xs text-base-content/60 font-medium">Learn • Grow • Excel</span>
+          </div>
+        </Link>
 
-        <DropdownMenuContent
-          align="start"
-          sideOffset={4} // small gap between button and dropdown
-          className="bg-base-200 border border-white/10 w-max min-w-[180px] rounded-lg shadow-lg p-1"
-        >
-          {catalogs.map((catalog, i) => (
-            <DropdownMenuItem
-              key={i}
-              className="text-sm text-white hover:text-primary hover:bg-white/5 rounded-md px-3 py-2 transition-colors"
-            >
-              <Link
-                to={`/categorycourses/${catalog.name
-                  .split(" ")
-                  .join("-")}`}
-                className="block w-full"
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center space-x-2">
+          {navbarLinks.map((link, index) =>
+            link.title === "Catalog" ? (
+              <DropdownMenu key={index}>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    className={`relative group flex items-center gap-2 text-sm font-medium hover:text-white hover:bg-white/10 px-4 py-2 rounded-lg transition-all duration-300 ${
+                      location.pathname.includes("/categorycourses")
+                        ? "text-white bg-gradient-to-r from-primary-500 to-secondary-500 shadow-glow"
+                        : "text-base-content"
+                    }`}
+                  >
+                    <Book className="w-4 h-4" />
+                    {link.title}
+                    <ChevronDown className="w-4 h-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                  </Button>
+                </DropdownMenuTrigger>
+
+                <DropdownMenuContent
+                  align="start"
+                  sideOffset={8}
+                  className="glass-card border-white/20 w-64 rounded-xl shadow-2xl p-2"
+                >
+                  <div className="p-2 border-b border-white/10 mb-2">
+                    <h3 className="text-sm font-semibold text-white flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-primary-400" />
+                      Course Categories
+                    </h3>
+                    <p className="text-xs text-base-content/60 mt-1">Explore our diverse learning paths</p>
+                  </div>
+                  {catalogs.map((catalog, i) => (
+                    <DropdownMenuItem
+                      key={i}
+                      className="text-sm text-base-content hover:text-white hover:bg-white/10 rounded-lg px-3 py-3 transition-all duration-200 cursor-pointer"
+                    >
+                      <Link
+                        to={`/categorycourses/${catalog.name
+                          .split(" ")
+                          .join("-")}`}
+                        className="flex items-center gap-3 w-full"
+                      >
+                        <div className="w-2 h-2 rounded-full bg-gradient-to-r from-primary-400 to-secondary-400"></div>
+                        <span className="font-medium">{catalog.name}</span>
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <NavLink 
+                key={index} 
+                to={link?.path || ""}
+                icon={
+                  link.title === "Home" ? <Home className="w-4 h-4" /> :
+                  link.title === "About Us" ? <Users className="w-4 h-4" /> :
+                  link.title === "Contact Us" ? <Mail className="w-4 h-4" /> :
+                  undefined
+                }
               >
-                {catalog.name}
-              </Link>
-            </DropdownMenuItem>
-          ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
-    ) : (
-              <NavLink key={index} to={link?.path || ""}>
                 {link.title}
               </NavLink>
             )
           )}
         </nav>
+
+        {/* Desktop Actions */}
         <div className="hidden lg:flex items-center gap-4">
           {user && user?.role === "Student" && (
             <Link to="/dashboard/cart" className="relative group">
-              <ShoppingCart className="text-2xl text-base-content group-hover:text-primary transition-colors duration-300" />
-              {cartItemsCount > 0 && (
-                <span className="absolute -top-2 -right-2 w-5 h-5 bg-primary text-black rounded-full flex items-center justify-center text-xs font-bold">
-                  {cartItemsCount}
-                </span>
-              )}
+              <div className="relative p-2 rounded-lg hover:bg-white/10 transition-all duration-300">
+                <ShoppingCart className="w-6 h-6 text-base-content group-hover:text-white transition-colors duration-300" />
+                {cartItemsCount > 0 && (
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-full flex items-center justify-center text-xs font-bold shadow-glow animate-pulse">
+                    {cartItemsCount}
+                  </span>
+                )}
+              </div>
             </Link>
           )}
+          
           {token === null ? (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <Link to="/login">
                 <Button
                   variant="ghost"
-                  className="text-sm hover:text-primary hover:bg-base-200/50 flex items-center"
+                  className="text-sm font-medium hover:text-white hover:bg-white/10 flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300"
                 >
-                  <LogIn className="w-4 h-4 mr-2" />
+                  <LogIn className="w-4 h-4" />
                   Log in
                 </Button>
               </Link>
               <Link to="/signup">
-                <Button
-                  variant="default"
-                  className="text-sm bg-primary text-black hover:bg-secondary flex items-center"
-                >
-                  <UserPlus className="w-4 h-4 mr-2" />
+                <Button className="btn-primary text-sm font-semibold px-6 py-2 rounded-lg flex items-center gap-2 shadow-glow">
+                  <UserPlus className="w-4 h-4" />
                   Sign Up
                 </Button>
               </Link>
@@ -180,54 +213,57 @@ const Navbar: React.FC = () => {
             <ProfileDropDown />
           )}
         </div>
+
+        {/* Mobile Menu */}
         <Sheet>
           <SheetTrigger asChild className="lg:hidden">
-            <Button variant="ghost" size="icon">
-              <Menu className="w-5 h-5" />
+            <Button variant="ghost" size="icon" className="hover:bg-white/10 rounded-lg">
+              <Menu className="w-6 h-6" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="bg-base-200 border-white/10">
-            <SheetHeader>
-              <SheetTitle className="text-primary">Menu</SheetTitle>
+          <SheetContent side="right" className="glass-card border-white/20 w-80">
+            <SheetHeader className="border-b border-white/10 pb-4">
+              <SheetTitle className="gradient-text text-xl font-bold">Menu</SheetTitle>
             </SheetHeader>
             <div className="flex flex-col gap-4 mt-8">
               {navbarLinks.map((link, index) => (
                 <Link
                   key={index}
                   to={link?.path || ""}
-                  className={`flex items-center text-sm py-2 transition-colors duration-300 ${
+                  className={`flex items-center gap-3 text-base py-3 px-4 rounded-lg transition-all duration-300 ${
                     matchRoute(link?.path || "")
-                      ? "text-primary"
-                      : "text-base-content hover:text-primary"
+                      ? "text-white bg-gradient-to-r from-primary-500 to-secondary-500 shadow-glow"
+                      : "text-base-content hover:text-white hover:bg-white/10"
                   }`}
                 >
-                  {/* {navIcons[link.title]} */}
+                  {link.title === "Home" && <Home className="w-5 h-5" />}
+                  {link.title === "About Us" && <Users className="w-5 h-5" />}
+                  {link.title === "Contact Us" && <Mail className="w-5 h-5" />}
+                  {link.title === "Catalog" && <Book className="w-5 h-5" />}
                   {link.title}
                 </Link>
               ))}
+              
               {token === null ? (
-                <div className="flex flex-col gap-2 mt-4">
+                <div className="flex flex-col gap-3 mt-6 pt-6 border-t border-white/10">
                   <Link to="/login">
                     <Button
                       variant="ghost"
-                      className="w-full text-sm hover:text-primary hover:bg-base-200/50 flex items-center justify-center"
+                      className="w-full text-base hover:text-white hover:bg-white/10 flex items-center justify-center gap-2 py-3 rounded-lg"
                     >
-                      <LogIn className="w-4 h-4 mr-2" />
+                      <LogIn className="w-5 h-5" />
                       Log in
                     </Button>
                   </Link>
                   <Link to="/signup">
-                    <Button
-                      variant="default"
-                      className="w-full text-sm bg-primary text-black hover:bg-primary/80 flex items-center justify-center"
-                    >
-                      <UserPlus className="w-4 h-4 mr-2" />
+                    <Button className="btn-primary w-full text-base font-semibold py-3 rounded-lg flex items-center justify-center gap-2 shadow-glow">
+                      <UserPlus className="w-5 h-5" />
                       Sign Up
                     </Button>
                   </Link>
                 </div>
               ) : (
-                <div className="mt-4">
+                <div className="mt-6 pt-6 border-t border-white/10">
                   <ProfileDropDown />
                 </div>
               )}
