@@ -67,7 +67,6 @@ const LearningGrid = () => {
               <div className="mt-6">
                 <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2">
                   {card.BtnText} <ArrowRight className="w-4 h-4" />
-                </Button>
               </div>
             </div>
           ) : (
