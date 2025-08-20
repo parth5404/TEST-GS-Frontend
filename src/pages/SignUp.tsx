@@ -4,7 +4,7 @@ import signupImage from '../assets/Images/signup.webp'
 
 const SignUp = () => {
   return (
-    <div>
+    <div className="bg-black min-h-screen">
       <Template
         heading={'Join the millions learning to code with GS Academia for free'}
         desc1={'Build skills for today, tomorrow, and beyond.'}

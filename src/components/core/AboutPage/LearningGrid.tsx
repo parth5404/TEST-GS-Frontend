@@ -42,14 +42,14 @@ const learningGridData = [
 
 const LearningGrid = () => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-4 container mx-auto py-20 gap-8">
+    <div className="grid grid-cols-1 lg:grid-cols-4 container mx-auto py-20 gap-8 px-4 bg-black">
       {learningGridData.map((card, index) => (
         <motion.div
           key={index}
           className={`
             ${card.order === -1 ? 'lg:col-span-2 lg:row-span-2' : ''}
-            ${card.order % 2 === 1 ? 'bg-white/5' : 'bg-transparent border border-white/10'}
-            p-6 rounded-lg backdrop-blur-sm
+            ${card.order % 2 === 1 ? 'bg-gray-900' : 'bg-transparent border border-gray-700'}
+            p-6 rounded-lg
           `}
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -60,20 +60,20 @@ const LearningGrid = () => {
             <div className="flex flex-col h-full justify-between">
               <div>
                 <h2 className="text-3xl font-bold text-white">
-                  {card.heading} <span className="text-primary">{card.highlightText}</span>
+                  {card.heading} <span className="text-blue-400">{card.highlightText}</span>
                 </h2>
-                <p className="mt-4 text-base-content/80">{card.description}</p>
+                <p className="mt-4 text-gray-300">{card.description}</p>
               </div>
               <div className="mt-6">
-                <Button variant="primary">
-                  {card.BtnText} <ArrowRight className="w-4 h-4 ml-2" />
+                <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2">
+                  {card.BtnText} <ArrowRight className="w-4 h-4" />
                 </Button>
               </div>
             </div>
           ) : (
             <div className="flex flex-col">
               <h3 className="text-xl font-bold text-white mb-3">{card.heading}</h3>
-              <p className="text-base-content/80">{card.description}</p>
+              <p className="text-gray-300">{card.description}</p>
             </div>
           )}
         </motion.div>

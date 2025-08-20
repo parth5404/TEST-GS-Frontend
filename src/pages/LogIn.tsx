@@ -4,7 +4,7 @@ import loginImage from '../assets/Images/login.webp'
 
 const LogIn = () => {
   return (
-    <div>
+    <div className="bg-black min-h-screen">
       <Template
         heading={'Welcome Back'}
         desc1={'Build skills for today, tomorrow, and beyond.'}

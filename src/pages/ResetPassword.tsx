@@ -46,26 +46,26 @@ const ResetPassword = () => {
   }
 
   return (
-    <div className='text-white bg-richblack-900 min-h-[calc(100vh-3.5rem)] flex place-items-center' >
+    <div className='text-white bg-black min-h-screen flex place-items-center' >
       {
         loading
           ?
           (<div className='w-full'><Spinner /></div>)
           :
           (
-            <div className='w-11/12 max-w-[500px] p-4 lg:p-8 mx-auto  flex flex-col' >
-              <h2 className='text-3xl font-semibold leading-[2.375rem] text-richblack-5' >
+            <div className='w-11/12 max-w-[500px] p-4 lg:p-8 mx-auto flex flex-col bg-gray-900 rounded-lg border border-gray-700' >
+              <h2 className='text-3xl font-semibold leading-[2.375rem] text-white' >
                 Choose new password
               </h2>
 
 
-              <p className='text-richblack-100 my-4 text-lg leading-[1.625rem]' >
+              <p className='text-gray-300 my-4 text-lg leading-[1.625rem]' >
                 Almost done. Enter your new password and you're all set.
               </p>
 
               <form onSubmit={handleOnResetPassword}>
                 <label className='block relative' >
-                  <p className='mb-1 text-sm leading-[1.375rem] text-richblack-5' >New Password <sup className='text-pink-200' >*</sup></p>
+                  <p className='mb-1 text-sm leading-[1.375rem] text-white' >New Password <sup className='text-red-400' >*</sup></p>
                   <input
                     type={showPassword ? 'text' : 'password'}
                     placeholder='Enter Password'
@@ -73,7 +73,7 @@ const ResetPassword = () => {
                     value={password}
                     onChange={handleOnChange}
                     required
-                    className='w-full placeholder:text-richblack-400 rounded-lg p-3 pr-12 bg-richblack-700 text-richblack-5 shadow-[0_1px_0] shadow-[rgba(255,255,255,0.5)]'
+                    className='w-full placeholder:text-gray-400 rounded-lg p-3 pr-12 bg-gray-800 text-white border border-gray-600 focus:border-blue-500 focus:outline-none'
                   />
 
                   <span className='absolute right-3 top-[38px] cursor-pointer' onClick={() => setShowPassword((prev) => !prev)} >
@@ -84,7 +84,7 @@ const ResetPassword = () => {
                 </label>
 
                 <label className='block relative' >
-                  <p className='mb-1 mt-6 text-sm leading-[1.375rem] text-richblack-5' >Confirm New Password <sup className='text-pink-200' >*</sup></p>
+                  <p className='mb-1 mt-6 text-sm leading-[1.375rem] text-white' >Confirm New Password <sup className='text-red-400' >*</sup></p>
                   <input
                     type={showConfirmPassword ? 'text' : 'password'}
                     placeholder='Confirm Password'
@@ -92,7 +92,7 @@ const ResetPassword = () => {
                     value={confirmPassword}
                     onChange={handleOnChange}
                     required
-                    className='w-full placeholder:text-richblack-400 rounded-lg p-3 pr-12 bg-richblack-700 text-richblack-5 shadow-[0_1px_0] shadow-[rgba(255,255,255,0.5)]'
+                    className='w-full placeholder:text-gray-400 rounded-lg p-3 pr-12 bg-gray-800 text-white border border-gray-600 focus:border-blue-500 focus:outline-none'
                   />
 
                   <span className='absolute right-3 top-[38px] cursor-pointer' onClick={() => setShowConfirmPassword((prev) => !prev)} >
@@ -103,7 +103,7 @@ const ResetPassword = () => {
                 </label>
 
                 {/* Instruction about password */}
-                <div className='mt-6 flex flex-row gap-x-3 text-xs leading-[20px] text-caribbeangreen-300' >
+                <div className='mt-6 flex flex-row gap-x-3 text-xs leading-[20px] text-green-400' >
                   <div className='flex flex-col gap-y-1' >
                     <div className='flex gap-x-1 items-center' >
                       <BsFillCheckCircleFill />
@@ -131,13 +131,13 @@ const ResetPassword = () => {
                   </div>
                 </div>
 
-                <button type='submit' className='w-full mt-6 rounded-lg bg-yellow-50 p-3 font-medium text-richblack-900' >
+                <button type='submit' className='w-full mt-6 rounded-lg bg-blue-600 p-3 font-medium text-white hover:bg-blue-700 transition-colors' >
                   Reset Password
                 </button>
               </form>
 
               <Link to={'/login'} >
-                <div className='mt-6 flex items-center gap-x-2 text-richblack-5 '>
+                <div className='mt-6 flex items-center gap-x-2 text-white hover:text-blue-400 transition-colors'>
                   <BiArrowBack />
                   <p>Back To Login</p>
                 </div>
