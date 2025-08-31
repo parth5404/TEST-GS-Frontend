@@ -26,7 +26,7 @@ const VerifyEmail = () => {
   }
 
   return (
-    <div className='min-h-[calc(100vh-3.5rem)] flex justify-center items-center'>
+    <div className='min-h-screen bg-black flex justify-center items-center'>
       {
         loading ?
           (
@@ -34,9 +34,9 @@ const VerifyEmail = () => {
           )
           :
           (
-            <div className='max-w-[500px] p-4 lg:p-8' >
-              <h2 className=' text-3xl text-richblack-5 font-semibold' >Verify Email</h2>
-              <p className='text-lg text-richblack-100 my-4 ' >A verification code has been sent to your email <span className='font-bold' >{email}</span>. Enter the code below</p>
+            <div className='max-w-[500px] p-4 lg:p-8 bg-gray-900 rounded-lg border border-gray-700' >
+              <h2 className='text-3xl text-white font-semibold' >Verify Email</h2>
+              <p className='text-lg text-gray-300 my-4' >A verification code has been sent to your email <span className='font-bold text-white' >{email}</span>. Enter the code below</p>
 
               <div>
                 <form onSubmit={handleVerifyAndSignUp} >
@@ -48,7 +48,7 @@ const VerifyEmail = () => {
                       inputType='number'
                       numInputs={6}
                       renderInput={(props) => (
-                        <input {...props} placeholder='-' className='w-[48px] lg:w-[60px] border-0 bg-richblack-800 rounded-lg aspect-square text-black text-center focus:border-0 focus:outline-2 focus:outline-yellow-50 shadow-[0_1px_0_rgba(255,255,255,0.3)]'
+                        <input {...props} placeholder='-' className='w-[48px] lg:w-[60px] border border-gray-600 bg-gray-800 rounded-lg aspect-square text-white text-center focus:border-blue-500 focus:outline-none'
 
                           style={{}}
                         />
@@ -60,7 +60,7 @@ const VerifyEmail = () => {
                     />
                   </div>
 
-                  <button type='submit' className='w-full bg-white p-3 rounded-lg mt-6 font-semibold text-black' >
+                  <button type='submit' className='w-full bg-blue-600 p-3 rounded-lg mt-6 font-semibold text-white hover:bg-blue-700 transition-colors' >
 
                     Verify Email
                   </button>
@@ -70,13 +70,13 @@ const VerifyEmail = () => {
 
               <div className='mt-6 flex items-center justify-between' >
                 <Link to={'/signup'} >
-                  <div className='flex items-center gap-x-2 text-richblack-5 '>
+                  <div className='flex items-center gap-x-2 text-white hover:text-blue-400 transition-colors'>
                     <BiArrowBack />
                     <p>Back to SignUp</p>
                   </div>
                 </Link>
 
-                <button className='flex items-center gap-x-2 text-blue-100'
+                <button className='flex items-center gap-x-2 text-blue-400 hover:text-blue-300 transition-colors'
                   onClick={() => sendOtp(signUpData.email, dispatch, navigate)} >
                   <RxCountdownTimer />
                   <p>Resend OTP</p>

@@ -24,7 +24,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="bg-base-300 bg-opacity-30 backdrop-blur-md min-h-screen">
+    <div className="bg-gray-900 min-h-screen border-r border-gray-700">
       <div className="flex flex-col w-full md:min-w-[220px] border-r border-base-200 py-10">
         <div className="flex flex-col">
           {sidebarLinks.map((link) => {
@@ -32,11 +32,11 @@ const Sidebar = () => {
             return <SidebarLink key={link.id} data={link} />;
           })}
         </div>
-        <div className="mx-auto my-6 h-[1px] w-10/12 bg-base-200"></div>
+        <div className="mx-auto my-6 h-[1px] w-10/12 bg-gray-600"></div>
         <SidebarLink data={{ name: 'Settings', path: '/dashboard/settings', icon: 'VscSettingsGear' }} />
         <button
           onClick={() => setIsModalOpen(true)}
-          className="flex items-center gap-x-2 text-sm font-medium px-8 py-2 text-base-content hover:text-primary transition-all duration-200"
+          className="flex items-center gap-x-2 text-sm font-medium px-8 py-2 text-gray-300 hover:text-white transition-all duration-200"
         >
           <VscSignOut className="text-lg" />
           <span className="hidden md:block">Logout</span>

@@ -18,21 +18,27 @@ const ForgotPassword = () => {
   }
 
   return (
+
     <div className='text-white bg-richblack-900 min-h-[calc(100vh-3.5rem)] flex place-items-center' >
+
       {
         loading ?
           (<div className='w-full'>  <Spinner /></div>)
           :
           (
+
             <div className='w-11/12 max-w-[500px] p-4 lg:p-8 mx-auto  flex flex-col' >
               <h2 className='text-3xl font-semibold leading-[2.375rem] text-richblack-5' >
+
                 {
                   !emailSent ? 'Reset your password' : 'Check email'
                 }
               </h2>
 
 
+
               <p className='text-richblack-100 my-4 text-lg leading-[1.625rem]' >
+
                 {
                   !emailSent
                     ?
@@ -52,7 +58,7 @@ const ForgotPassword = () => {
                   !emailSent &&
                   (
                     <label className='w-full' >
-                      <p className='mb-1 text-sm leading-[1.375rem] text-richblack-5' >Email Address <sup className='text-pink-200' >*</sup></p>
+                      <p className='mb-1 text-sm leading-[1.375rem] text-white' >Email Address <sup className='text-red-400' >*</sup></p>
                       <input
                         type="email"
                         placeholder='Enter Email Address'
@@ -60,14 +66,18 @@ const ForgotPassword = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
+
                         className='w-full placeholder:text-black rounded-lg p-3 pr-12 bg-richblack-700 text-black shadow-[0_1px_0] shadow-[rgba(255,255,255,0.5)]'
+
                       />
                     </label>
                   )
                 }
 
 
+
                 <button type='submit' className='w-full mt-6 rounded-lg bg-black p-3 font-medium text-white border border-white' >
+
                   {
                     !emailSent ? 'Send Reset Link' : 'Resend Reset Link'
                   }
@@ -75,7 +85,9 @@ const ForgotPassword = () => {
               </form>
 
               <Link to={'/login'} >
+
                 <div className='mt-6 flex items-center gap-x-2 text-richblack-5 '>
+
                   <BiArrowBack />
                   <p>Back To Login</p>
                 </div>

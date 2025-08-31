@@ -73,28 +73,28 @@ const ViewCourse = () => {
 
 
   return (
-    <div className='bg-richblack-900'>
+    <div className='bg-black'>
       {
         loading ?
           (
-            <div className='min-h-[calc(100vh-10rem)] flex justify-center items-center' >
+            <div className='min-h-[calc(100vh-10rem)] flex justify-center items-center bg-black' >
               <Spinner />
             </div>
           )
           : !courseData
             ?
             (
-              <div className='min-h-[calc(100vh-10rem)] flex flex-col justify-center items-center text-richblack-200 mx-auto font-semibold text-center mt-10 text-xl space-y-5' >
+              <div className='min-h-[calc(100vh-10rem)] flex flex-col justify-center items-center text-white bg-black mx-auto font-semibold text-center mt-10 text-xl space-y-5' >
                 <p className=''>No Such Course (or Lecture) Found !!</p>
                 <p className='' >Check URL</p>
               </div>
             )
             :
             (
-              <div className='relative flex bg-richblack-900 text-white' >
+              <div className='relative flex bg-black text-white' >
                 {/* left - Course Details SideBar */}
-                <div className='min-h-[calc(100vh-3.5rem)] bg-richblack-800' >
-                  <div className='h-[calc(100vh-3.5rem)] last:text-white w-[175px] md:w-[350px] max-w-[450px] ' >
+                <div className='min-h-[calc(100vh-3.5rem)] bg-gray-900' >
+                  <div className='h-[calc(100vh-3.5rem)] text-white w-[175px] md:w-[350px] max-w-[450px] ' >
                     <CourseDetailsSidebar
                       currentOpenSection={currentOpenSection}
                       setCurrentOpenSection={setCurrentOpenSection}
@@ -106,8 +106,8 @@ const ViewCourse = () => {
                 </div>
 
                 {/* Right - Video Player */}
-                <div className='min-h-[calc(100vh-3.5rem)] w-full bg-pink-100' >
-                  <div className='overflow-y-auto w-full bg-richblack-800 h-[calc(100vh-3.5rem)]' >
+                <div className='min-h-[calc(100vh-3.5rem)] w-full bg-black' >
+                  <div className='overflow-y-auto w-full bg-black h-[calc(100vh-3.5rem)]' >
                     <VideoDetails
                       subSection={currentSubSection}
                       loading={loading}

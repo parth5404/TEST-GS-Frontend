@@ -57,7 +57,7 @@ const CategoryCourses = () => {
     <div>
       {
         (loading || (!loading && !categoryPageData)) && (
-          <div className='grid place-items-center min-h-[calc(100vh-3.5rem)]' >
+          <div className='grid place-items-center min-h-[calc(100vh-3.5rem)] bg-black' >
             <Spinner />
           </div>
         )
@@ -66,21 +66,21 @@ const CategoryCourses = () => {
       {
         !loading && categoryPageData &&
         (
-          <div className=' bg-richblack-900 ' >
+          <div className='bg-black text-white min-h-screen' >
             {/* Header */}
-            <div className='bg-richblack-800' >
-              <div className='mx-auto box-content px-10 flex flex-col gap-4 justify-center min-h-[200px] max-w-maxContentTab lg:max-w-maxContent ' >
+            <div className='bg-gray-900 pt-20' >
+              <div className='mx-auto box-content px-4 lg:px-10 flex flex-col gap-4 justify-center min-h-[200px] max-w-4xl lg:max-w-6xl ' >
                 <p className='text-sm text-richblack-300' >Home / Category /
                   {" "}
-                  <span className='text-yellow-25' >
+                  <span className='text-yellow-400' >
                     {categoryPageData.requestedCategory?.name || categoryName}</span>
                 </p>
 
-                <p className='text-3xl text-richblack-5' >
+                <p className='text-3xl text-white font-bold' >
                   {categoryPageData.requestedCategory?.name || categoryName}
                 </p>
 
-                <p className='max-w-[870px] text-richblack-200' >
+                <p className='max-w-[870px] text-gray-300' >
                   {categoryPageData.requestedCategory?.description}
                 </p>
               </div>
@@ -88,12 +88,12 @@ const CategoryCourses = () => {
 
 
             {/* Section 1 */}
-            <div className='box-content mx-auto px-10 py-12 max-w-maxContentTab lg:max-w-maxContent' >
-              <h2 className='text-2xl text-richblack-5 font-bold lg:text-4xl' >Courses to get you started</h2>
-              <div className='flex my-4 border-b border-b-richblack-600 text-sm' >
+            <div className='box-content mx-auto px-4 lg:px-10 py-12 max-w-4xl lg:max-w-6xl' >
+              <h2 className='text-2xl text-white font-bold lg:text-4xl' >Courses to get you started</h2>
+              <div className='flex my-4 border-b border-b-gray-600 text-sm' >
                 <p
                   className={`cursor-pointer px-4 py-2
-                  ${activeTab === 1 ? " text-yellow-25 border-b border-b-yellow-25" : "text-richblack-50"}`}
+                  ${activeTab === 1 ? " text-yellow-400 border-b border-b-yellow-400" : "text-gray-300"}`}
                   onClick={() => setActiveTab(1)}
                 >
                   Most Popular
@@ -101,7 +101,7 @@ const CategoryCourses = () => {
 
                 <p
                   className={`cursor-pointer px-4 py-2
-                  ${activeTab === 2 ? " text-yellow-25 border-b border-b-yellow-25" : "text-richblack-50"}`}
+                  ${activeTab === 2 ? " text-yellow-400 border-b border-b-yellow-400" : "text-gray-300"}`}
                   onClick={() => setActiveTab(2)}
                 >
                   New
@@ -127,8 +127,8 @@ const CategoryCourses = () => {
 
 
             {/* Section 2 */}
-            <div className='box-content mx-auto px-10 py-12 max-w-maxContentTab lg:max-w-maxContent'>
-              <h2 className='text-2xl text-richblack-5 font-bold lg:text-4xl' >
+            <div className='box-content mx-auto px-4 lg:px-10 py-12 max-w-4xl lg:max-w-6xl'>
+              <h2 className='text-2xl text-white font-bold lg:text-4xl' >
                 Top courses in {categoryPageData.otherCategoryCourses.name}
               </h2>
 
@@ -144,8 +144,8 @@ const CategoryCourses = () => {
 
 
             {/* Section 3 */}
-            <div className='box-content mx-auto px-10 py-12 max-w-maxContentTab lg:max-w-maxContent'>
-              <h2 className='text-2xl text-richblack-5 font-bold lg:text-4xl' >
+            <div className='box-content mx-auto px-4 lg:px-10 py-12 max-w-4xl lg:max-w-6xl'>
+              <h2 className='text-2xl text-white font-bold lg:text-4xl' >
                 Frequently Bought
               </h2>
 

@@ -153,11 +153,11 @@ const CourseDetails = () => {
   }
 
   return (
-    <div className='bg-richblack-900' >
+    <div className='bg-black min-h-screen' >
 
       {
         loading && (
-          <div className='grid place-items-center min-h-[calc(100vh-3.5rem)]' >
+          <div className='grid place-items-center min-h-[calc(100vh-3.5rem)] bg-black' >
             <Spinner />
           </div>
         )
@@ -165,8 +165,8 @@ const CourseDetails = () => {
 
       {
         !loading && !courseData && (
-          <div className='grid place-items-center min-h-[calc(100vh-3.5rem)]' >
-            <p className='text-xl text-center text-richblack-5' >No Such Course Found</p>
+          <div className='grid place-items-center min-h-[calc(100vh-3.5rem)] bg-black' >
+            <p className='text-xl text-center text-white' >No Such Course Found</p>
           </div>
         )
       }
@@ -174,44 +174,44 @@ const CourseDetails = () => {
       {
         !loading && courseData &&
         (
-          <div className='bg-richblack-900 text-richblack-5' >
-            <div className='bg-richblack-800 text-richblack-5 '  >
+          <div className='bg-black text-white' >
+            <div className='bg-gray-900 text-white pt-20'  >
               {/* Course Details */}
-              <div className='mx-auto px-4 py-8 lg:w-[1260px] min-h-[450px]  2xl:relative' >
+              <div className='mx-auto px-4 py-8 max-w-6xl min-h-[450px] 2xl:relative' >
 
-                <div className='mx-auto lg:mx-0 flex flex-col items-center lg:items-start max-w-maxContentTab xl:max-w-[810px]' >
+                <div className='mx-auto lg:mx-0 flex flex-col items-center lg:items-start max-w-4xl xl:max-w-[810px]' >
                   <p className='text-sm w-full ml-5 lg:ml-0 text-left text-richblack-300' >Home / Learning /
                     {" "}
-                    <span className='text-yellow-25' >
+                    <span className='text-yellow-400' >
                       {courseData.category.name}
                     </span>
                   </p>
 
                   {/* Course thumbnail - For small screen */}
                   <div className='lg:hidden relative max-h-[30rem] mt-5' >
-                    <div className="absolute bottom-0 left-0 h-full w-full shadow-[#161D29_0px_-64px_36px_-28px_inset]"></div>
+                    <div className="absolute bottom-0 left-0 h-full w-full bg-gradient-to-t from-black/80 to-transparent"></div>
                     <img
                       src={courseData.thumbnail}
                       alt="course thumbnail"
-                      className='w-full aspect-ratio'
+                      className='w-full h-auto rounded-lg'
                     />
                   </div>
 
-                  <div className='flex flex-col justify-center gap-4 py-5 text-lg text-richblack-5 my-5' >
+                  <div className='flex flex-col justify-center gap-4 py-5 text-lg text-white my-5' >
 
-                    <p className='text-3xl sm:text-4xl font-bold text-richblack-5 ' >{courseData.title}</p>
-                    <p className='text-richblack-200' >{courseData.description}</p>
+                    <p className='text-3xl sm:text-4xl font-bold text-white ' >{courseData.title}</p>
+                    <p className='text-gray-300' >{courseData.description}</p>
 
                     <div className='flex items-center flex-wrap gap-2 text-md' >
-                      <p className='text-yellow-25' >{courseData.averageRating}</p>
+                      <p className='text-yellow-400' >{courseData.averageRating}</p>
 
                       <RatingStars rating={courseData.averageRating} starSize={24} />
 
-                      <p className='text-richblack-200' >( {courseData.reviews.length} ratings ) </p>
-                      <p className='text-richblack-200' >{courseData.numberOfEnrolledStudents} students</p>
+                      <p className='text-gray-300' >( {courseData.reviews.length} ratings ) </p>
+                      <p className='text-gray-300' >{courseData.numberOfEnrolledStudents} students</p>
                     </div>
 
-                    <p className='text-richblack-5' >Created by {courseData.instructor.firstName} {courseData.instructor.lastName}</p>
+                    <p className='text-white' >Created by {courseData.instructor.firstName} {courseData.instructor.lastName}</p>
 
                     <div className='flex flex-wrap gap-5 text-lg' >
                       <p className='flex items-center gap-2' >
@@ -228,13 +228,15 @@ const CourseDetails = () => {
                   </div>
 
                   {/* Buy now - For small screen */}
-                  <div className='lg:hidden w-full flex flex-col gap-4 border-y border-y-richblack-500 py-4 ' >
-                    <p className='pb-4 text-3xl font-semibold text-richblack-5 text-center' >
+                  <div className='lg:hidden w-full flex flex-col gap-4 border-y border-y-gray-600 py-4 ' >
+                    <p className='pb-4 text-3xl font-semibold text-white text-center' >
                       ₹ {courseData.price}
                     </p>
 
                     <button
+
                       className='rounded-md bg-white px-5 py-2 font-semibold text-black'
+
                       onClick={handleBuyNowClick}
                     >
                       {
@@ -248,7 +250,7 @@ const CourseDetails = () => {
                       (!user || !courseData.studentsEnrolled.includes(user._id)) &&
                       (
                         <button
-                          className='rounded-md bg-richblack-800 px-5 py-2 font-semibold text-richblack-5'
+                          className='rounded-md bg-gray-800 px-5 py-2 font-semibold text-white hover:bg-gray-700 transition-colors'
                           onClick={handleAddToCart}
                         >
                           Add to Cart
@@ -257,7 +259,7 @@ const CourseDetails = () => {
                     }
 
                     <div className='mx-auto text-center'>
-                      <button className='py-6 text-yellow-100' onClick={handleShare} >
+                      <button className='py-6 text-yellow-400 hover:text-yellow-300 transition-colors' onClick={handleShare} >
                         <div className='flex items-center gap-2' >
                           <FaShareSquare size={15} />
                           <p>Share</p>
@@ -284,12 +286,12 @@ const CourseDetails = () => {
 
             </div>
 
-            <div className='bg-richblack-900 text-richblack-5' >
-              <div className='px-4 lg:w-[1260px] mx-auto' >
-                <div className='mx-auto lg:mx-0 max-w-maxContentTab xl:max-w-[810px]' >
+            <div className='bg-black text-white' >
+              <div className='px-4 max-w-6xl mx-auto' >
+                <div className='mx-auto lg:mx-0 max-w-4xl xl:max-w-[810px]' >
 
                   {/* What you will learn */}
-                  <div className='border border-richblack-600 my-8 p-8' >
+                  <div className='border border-gray-600 my-8 p-8 rounded-lg bg-gray-900' >
                     <p className='text-3xl font-semibold' >What you will learn</p>
                     <div className='mt-5' >
                       <ReactMarkdown  >
@@ -305,7 +307,7 @@ const CourseDetails = () => {
 
                       <div className='flex flex-wrap justify-between gap-2' >
 
-                        <div className='flex gap-1 text-sm text-richblack-200' >
+                        <div className='flex gap-1 text-sm text-gray-300' >
                           <p>{courseData.sections.length} section(s)</p>
                           <p className='flex  items-center'>
                             <BsDot size={24} />
@@ -321,7 +323,7 @@ const CourseDetails = () => {
 
                         <div>
                           <button
-                            className='text-yellow-25'
+                            className='text-yellow-400 hover:text-yellow-300 transition-colors'
                             onClick={() => handleCollapseExpand()}
                           >
                             {openSections.length ? "Collapse all sections" : "Expand all sections"}
@@ -359,7 +361,7 @@ const CourseDetails = () => {
 
                       <p className='text-lg' >{courseData.instructor.firstName} {courseData.instructor.lastName}</p>
                     </div>
-                    <p className='text-richblack-50' >
+                    <p className='text-gray-300' >
                       {courseData?.instructor?.profile?.about}
                     </p>
                   </div>
