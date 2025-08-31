@@ -24,7 +24,7 @@ const CourseBuyNowCard = ({ courseData, handleBuyNowClick, handleAddToCart, hand
         <div className='flex flex-col gap-4' >
           <button
             onClick={handleBuyNowClick}
-            className='bg-yellow-50 py-2 px-5 rounded-md font-semibold text-richblack-900'
+            className='bg-yellow-50 py-2 px-5 rounded-md font-semibold text-black'
           >
             {
               user && courseData.studentsEnrolled.includes(user._id) ?

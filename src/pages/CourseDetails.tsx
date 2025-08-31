@@ -234,7 +234,7 @@ const CourseDetails = () => {
                     </p>
 
                     <button
-                      className='rounded-md bg-yellow-50 px-5 py-2 font-semibold text-richblack-900'
+                      className='rounded-md bg-white px-5 py-2 font-semibold text-black'
                       onClick={handleBuyNowClick}
                     >
                       {

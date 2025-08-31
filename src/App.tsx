@@ -1,42 +1,40 @@
-import './App.css';
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import Home from './pages/Home.tsx';
-import LogIn from './pages/LogIn.tsx';
-import SignUp from './pages/SignUp.tsx';
-import Contact from './pages/Contact.tsx';
-import About from './pages/About.tsx';
-import VerifyEmail from './pages/VerifyEmail.tsx';
-import ForgotPassword from './pages/ForgotPassword.tsx';
-import ResetPassword from './pages/ResetPassword.tsx';
-import PageNotFound from './pages/PageNotFound.tsx';
-import Navbar from './components/common/Navbar.tsx';
-import PublicRoute from './components/core/Auth/PublicRoute.tsx';
-import PrivateRoute from './components/core/Auth/PrivateRoute.tsx';
-import DashBoard from './pages/DashBoard.tsx';
-import MyProfile from './components/core/Dashboard/MyProfile.tsx';
-import Settings from './components/core/Dashboard/Settings/Settings.tsx';
-import Cart from './components/core/Dashboard/Cart/Cart.tsx';
-import EnrolledCourses from './components/core/Dashboard/EnrolledCourses.tsx';
+import "./App.css";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import Home from "./pages/Home.tsx";
+import LogIn from "./pages/LogIn.tsx";
+import SignUp from "./pages/SignUp.tsx";
+import Contact from "./pages/Contact.tsx";
+import About from "./pages/About.tsx";
+import VerifyEmail from "./pages/VerifyEmail.tsx";
+import ForgotPassword from "./pages/ForgotPassword.tsx";
+import ResetPassword from "./pages/ResetPassword.tsx";
+import PageNotFound from "./pages/PageNotFound.tsx";
+import Navbar from "./components/common/Navbar.tsx";
+import PublicRoute from "./components/core/Auth/PublicRoute.tsx";
+import PrivateRoute from "./components/core/Auth/PrivateRoute.tsx";
+import DashBoard from "./pages/DashBoard.tsx";
+import MyProfile from "./components/core/Dashboard/MyProfile.tsx";
+import Settings from "./components/core/Dashboard/Settings/Settings.tsx";
+import Cart from "./components/core/Dashboard/Cart/Cart.tsx";
+import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses.tsx";
 // eslint-disable-next-line
-import PurchaseHistory from './components/core/Dashboard/PurchaseHistory.tsx';
+import PurchaseHistory from "./components/core/Dashboard/PurchaseHistory.tsx";
 // eslint-disable-next-line
-import { ROLE_TYPE } from './utils/constants';
-import InstructorDashboard from './components/core/Dashboard/InstructorDashboard/InstructorDashboard.tsx';
-import InstructorMyCourses from './components/core/Dashboard/InstructorMyCourses/InstructorMyCourses.tsx';
-import AddCourse from './components/core/Dashboard/AddCourse/AddCourse.tsx';
-import PrivateStudentRoute from './components/core/Auth/PrivateStudentRoute.tsx';
-import PrivateInstructorPage from './components/core/Auth/PrivateInstructorPage.tsx';
-import EditCourse from './components/core/Dashboard/EditCourse/EditCourse.tsx';
-import CategoryCourses from './pages/CategoryCourses.tsx';
-import CourseDetails from './pages/CourseDetails.tsx';
-import ViewCourse from './pages/ViewCourse.tsx';
-
+import { ROLE_TYPE } from "./utils/constants";
+import InstructorDashboard from "./components/core/Dashboard/InstructorDashboard/InstructorDashboard.tsx";
+import InstructorMyCourses from "./components/core/Dashboard/InstructorMyCourses/InstructorMyCourses.tsx";
+import AddCourse from "./components/core/Dashboard/AddCourse/AddCourse.tsx";
+import PrivateStudentRoute from "./components/core/Auth/PrivateStudentRoute.tsx";
+import PrivateInstructorPage from "./components/core/Auth/PrivateInstructorPage.tsx";
+import EditCourse from "./components/core/Dashboard/EditCourse/EditCourse.tsx";
+import CategoryCourses from "./pages/CategoryCourses.tsx";
+import CourseDetails from "./pages/CourseDetails.tsx";
+import ViewCourse from "./pages/ViewCourse.tsx";
 
 function App() {
-
   const { token } = useSelector((state: any) => state.auth);
 
   // eslint-disable-next-line
@@ -45,30 +43,50 @@ function App() {
   return (
     <div className="bg-base-100 text-base-content w-screen min-h-screen flex flex-col font-sans">
       <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/categorycourses/:categoryName' element={<CategoryCourses />} />
-        <Route path='/course/:courseId' element={<CourseDetails />} />
+      <main className="flex-1 pt-16">
+        <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
+        <Route
+          path="/categorycourses/:categoryName"
+          element={<CategoryCourses />}
+        />
+        <Route path="/course/:courseId" element={<CourseDetails />} />
 
-        <Route path='/login' element={<PublicRoute route={<LogIn />} />} />
-        <Route path='/signup' element={<PublicRoute route={<SignUp />} />} />
-        <Route path='/verify-email' element={<PublicRoute route={<VerifyEmail />} />} />
-        <Route path='/forgot-password' element={<PublicRoute route={<ForgotPassword />} />} />
-        <Route path='/reset-password' element={<PublicRoute route={<ResetPassword />} />} />
-
+        <Route path="/login" element={<PublicRoute route={<LogIn />} />} />
+        <Route path="/signup" element={<PublicRoute route={<SignUp />} />} />
+        <Route
+          path="/verify-email"
+          element={<PublicRoute route={<VerifyEmail />} />}
+        />
+        <Route
+          path="/forgot-password"
+          element={<PublicRoute route={<ForgotPassword />} />}
+        />
+        <Route
+          path="/reset-password"
+          element={<PublicRoute route={<ResetPassword />} />}
+        />
 
         {/* Dashboard nested routes - Default route set to - dashboard/my-profile */}
-        <Route path='dashboard' element={<PrivateRoute route={<DashBoard />} />} >
-
-          <Route index element={<Navigate to={'my-profile'} />} />
-          <Route path='my-profile' element={<MyProfile />} />
-          <Route path='settings' element={<Settings />} />
+        <Route
+          path="dashboard"
+          element={<PrivateRoute route={<DashBoard />} />}
+        >
+          <Route index element={<Navigate to={"my-profile"} />} />
+          <Route path="my-profile" element={<MyProfile />} />
+          <Route path="settings" element={<Settings />} />
 
           {/* Routes only for students */}
-          <Route path='cart' element={<PrivateStudentRoute route={<Cart />} />} />
-          <Route path='enrolled-courses' element={<PrivateStudentRoute route={<EnrolledCourses />} />} />
+          <Route
+            path="cart"
+            element={<PrivateStudentRoute route={<Cart />} />}
+          />
+          <Route
+            path="enrolled-courses"
+            element={<PrivateStudentRoute route={<EnrolledCourses />} />}
+          />
           {/* <Route path='purchase-history' element={<PrivateStudentRoute route={<PurchaseHistory />} />} /> */}
 
           {/* {
@@ -83,10 +101,22 @@ function App() {
           } */}
 
           {/* Routes only for instructor */}
-          <Route path='instructor' element={<PrivateInstructorPage route={<InstructorDashboard />} />} />
-          <Route path='my-courses' element={<PrivateInstructorPage route={<InstructorMyCourses />} />} />
-          <Route path='add-course' element={<PrivateInstructorPage route={<AddCourse />} />} />
-          <Route path='edit-course/:courseId' element={<PrivateInstructorPage route={<EditCourse />} />} />
+          <Route
+            path="instructor"
+            element={<PrivateInstructorPage route={<InstructorDashboard />} />}
+          />
+          <Route
+            path="my-courses"
+            element={<PrivateInstructorPage route={<InstructorMyCourses />} />}
+          />
+          <Route
+            path="add-course"
+            element={<PrivateInstructorPage route={<AddCourse />} />}
+          />
+          <Route
+            path="edit-course/:courseId"
+            element={<PrivateInstructorPage route={<EditCourse />} />}
+          />
 
           {/* {
             user?.role === ROLE_TYPE.INSTRUCTOR &&
@@ -98,16 +128,16 @@ function App() {
               </>
             )
           } */}
-
         </Route>
 
         <Route
-          path='view-course/:courseId/section/:sectionId/sub-section/:subSectionId'
+          path="view-course/:courseId/section/:sectionId/sub-section/:subSectionId"
           element={<PrivateStudentRoute route={<ViewCourse />} />}
         />
 
         <Route path="*" element={<PageNotFound />} />
-      </Routes>
+        </Routes>
+      </main>
     </div>
   );
 }
